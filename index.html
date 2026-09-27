@@ -54,7 +54,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 .menu a{text-decoration:none;color:#766654;padding:8px 0;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
 .menu a:hover,.menu a[aria-current="page"]{color:#4b3d2e;border-color:var(--gold)}
 
-
 /* ---------- Jewellery / Clothing the dropdown menus in the nav ----------
    These lists are filled in automatically by renderNavDropdowns() using
    the CATEGORIES object further down, so you only ever need to edit the
@@ -106,6 +105,39 @@ main:focus{outline:none}
   @keyframes reveal{to{clip-path:inset(0);transform:none}}
 }
 
+/* ---------- Entrance / page-load animations ---------- */
+@media (prefers-reduced-motion:no-preference){
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes dropIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+
+  .nav{animation:dropIn .55s cubic-bezier(.2,.7,.2,1) both}
+
+  /* Home hero: headline, copy and image cascade in on first paint */
+  .v2-hero-copy .v2-kicker,.v2-hero-copy h1,.v2-hero-copy .v2-lead,.v2-hero-copy .v2-button{
+    opacity:0;animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .v2-hero-copy .v2-kicker{animation-delay:.15s}
+  .v2-hero-copy h1{animation-delay:.28s}
+  .v2-hero-copy .v2-lead{animation-delay:.42s}
+  .v2-hero-copy .v2-button{animation-delay:.56s}
+  .v2-hero-image{opacity:0;animation:fadeIn 1s .2s both}
+  .v2-categories .v2-category{opacity:0;animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) both}
+  .v2-categories .v2-category:nth-child(1){animation-delay:.5s}
+  .v2-categories .v2-category:nth-child(2){animation-delay:.62s}
+  .v2-trust{opacity:0;animation:fadeUp .7s .72s cubic-bezier(.2,.7,.2,1) both}
+
+  /* Every route change fades the new page content in */
+  main.page-in{animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) both}
+
+  /* Cards and sections animate in as they scroll into view */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  main.page-in{animation:none}
+}
+
 /* ---------- Sand pages ---------- */
 .on-sand{background:var(--sand);color:var(--text-on-sand)}
 .statement{padding:clamp(80px,12vw,170px) 0}
@@ -147,7 +179,7 @@ main:focus{outline:none}
 .tag-oos{position:absolute;top:14px;left:14px;z-index:2;background:#5a4936;color:#f8f1e6;font-size:12px;letter-spacing:.14em;padding:7px 13px}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
 .card:hover img{transform:scale(1.04)}
-.card .quick{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(74,59,42,.92);color:#4b3d2e;font-size:14px;letter-spacing:.16em;transform:translateY(100%);transition:transform .4s}
+.card .quick{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(74,59,42,.92);color:#f8f1e6;font-size:14px;letter-spacing:.16em;transform:translateY(100%);transition:transform .4s}
 .card:hover .quick,.card:focus-visible .quick{transform:none}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-top:18px}
 .card h3{font-size:clamp(24px,2vw,30px);line-height:1.15}
@@ -155,7 +187,7 @@ main:focus{outline:none}
 .card p{margin:6px 0 0;font-size:15px;color:var(--taupe);line-height:1.55}
 .card .stock,.pdp .stock{display:block;margin-top:8px;font-size:13.5px;letter-spacing:.06em;color:var(--gold-deep)}
 .card .stock.oos,.pdp .stock.oos{color:var(--err)}
-@media (hover:none){.card .quick{display:none}}
+@media (hover:none){.card .quick{transform:none;opacity:.96}}
 
 /* detail band */
 .detail{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
@@ -734,8 +766,8 @@ var IMAGES = {
 
   // Homepage
   heroBanner:        "images/sh.jpg",              // big photo at the top of the homepage
-  categoryJewellery: "images/jewellery.jpg",       // "Jewellery" photo card on the homepage
-  categoryClothing:  "images/clothing.jpg",        // "Clothing" photo card on the homepage
+  categoryJewellery: "images/jewellery-feature.jpg", // "Jewellery" photo card on the homepage
+  categoryClothing:  "images/clothing-feature.jpg",  // "Clothing" photo card on the homepage
   storyClothing:     "images/story-clothing.jpg",  // "Our story" section – left photo
   storyJewellery:    "images/story-jewellery.jpg", // "Our story" section – right photo
 
@@ -961,6 +993,22 @@ PRODUCTS = [
 /* ---------- helpers ---------- */
 var $=function(s,r){return (r||document).querySelector(s)};
 var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+
+/* Fades cards/sections in as they're scrolled into view. Re-run after
+   every route render since content is replaced each time. */
+var revealObserver=null;
+function initScrollReveal(root){
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  if(typeof IntersectionObserver==="undefined")return;
+  var els=$$(".card,.section,.statement,.sec-head",root);
+  if(!els.length)return;
+  if(!revealObserver){
+    revealObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");revealObserver.unobserve(en.target)}});
+    },{rootMargin:"0px 0px -8% 0px",threshold:.12});
+  }
+  els.forEach(function(el){el.classList.add("reveal");revealObserver.observe(el)});
+}
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function money(n){return CONFIG.currency+" "+Number(n).toLocaleString("en-US")}
 function byId(id){return PRODUCTS.filter(function(p){return p.id===id})[0]}
@@ -1435,6 +1483,8 @@ function route(){
   var pg=fn(arg,arg2); if(!pg)return;
   var m=$("#main");
   m.innerHTML=pg.html; document.title=pg.title;
+  m.classList.remove("page-in"); void m.offsetWidth; m.classList.add("page-in");
+  initScrollReveal(m);
   var navKey=name;
   if(name==="piece"){var pr=byId(arg);navKey=pr?pr.category:""}
   else if(name==="collections"){navKey=(arg==="jewellery"||arg==="clothing")?arg:""}
