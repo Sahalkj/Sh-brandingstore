@@ -5,28 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SH Branding Store | Fine Jewellery &amp; Clothing</title>
 <meta name="description" content="SH Branding Store – fine jewellery and luxury clothing, in Abu Dhabi, UAE. Cash on delivery available across the Emirates.">
-<link rel="icon" href="images/logo.png">
+<link rel="icon" href="images/logo1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Tenor+Sans&family=Beau+Rivage&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#4a3b2a; --ink-2:#5a4936;
-  --sand:#f8f1e6; --sand-2:#efe3d2;
-  --gold:#b89a70; --gold-soft:#d8c3a3; --gold-deep:#927653;
-  --taupe:#8a7761;
-  --text-on-sand:#4b3d2e; --text-on-ink:#f8f1e6; --muted-on-ink:#8d7b67;
-  --field-bg:rgba(255,255,255,.65); --line:rgba(138,119,97,.28); --err:#a3372c;
-  --serif:"Italiana","Cormorant Garamond","Didot","Bodoni MT",Georgia,serif;
-  --sans:"Tenor Sans","Gill Sans","Helvetica Neue",Arial,sans-serif;
+  --ink:#2C211B; --ink-2:#3d2f26;
+  --sand:#F7F3ED; --sand-2:#E8DED1;
+  --gold:#B49A72; --gold-soft:#B49A72; --gold-deep:#9A7F55;
+  --taupe:#8B7969;
+  --text-on-sand:#2C211B; --text-on-ink:#F7F3ED; --muted-on-ink:#8B7969;
+  --field-bg:#FFFFFF; --line:rgba(180,154,114,.28); --err:#a3372c;
+  --serif:"Playfair Display","Didot",Georgia,serif;
+  --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
   --script:"Beau Rivage","Segoe Script","Brush Script MT",cursive;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
   --nav-h:76px;
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--sand:#f8f1e6;--sand-2:#efe3d2;--text-on-sand:#4b3d2e;--taupe:#8a7761;--field-bg:rgba(255,255,255,.65);--line:rgba(138,119,97,.28);--err:#a3372c}
+  :root:not([data-theme="light"]){--sand:#F7F3ED;--sand-2:#E8DED1;--text-on-sand:#2C211B;--taupe:#8B7969;--field-bg:#FFFFFF;--line:rgba(180,154,114,.28);--err:#a3372c}
 }
-:root[data-theme="dark"]{--sand:#f8f1e6;--sand-2:#efe3d2;--text-on-sand:#4b3d2e;--taupe:#8a7761;--field-bg:rgba(255,255,255,.65);--line:rgba(138,119,97,.28);--err:#a3372c}
+:root[data-theme="dark"]{--sand:#F7F3ED;--sand-2:#E8DED1;--text-on-sand:#2C211B;--taupe:#8B7969;--field-bg:#FFFFFF;--line:rgba(180,154,114,.28);--err:#a3372c}
 
 *,*::before,*::after{box-sizing:inherit}
 html{height:100%;scroll-padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
@@ -43,16 +43,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 
 
 /* ---------- Header ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(248,241,230,.97);border-bottom:1px solid rgba(146,118,83,.25)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(247,243,237,.97);border-bottom:1px solid rgba(180,154,114,.25)}
 .nav .wrap{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:inline-flex;align-items:center;gap:2px;text-decoration:none;color:#4b3d2e;line-height:1}
+.brand{display:inline-flex;align-items:center;gap:2px;text-decoration:none;color:#2C211B;line-height:1}
 .brand-mark{height:42px;width:auto;margin-right:10px;filter:brightness(0) invert(1);opacity:.92}
-.brand .w{font-family:var(--script);font-size:44px;letter-spacing:.02em;color:#4b3d2e}
+.brand .w{font-family:var(--script);font-size:44px;letter-spacing:.02em;color:#2C211B}
 .brand .s{display:flex;flex-direction:column;line-height:1.25;margin-left:2px;font-size:15px;letter-spacing:.22em;color:var(--gold-soft)}
 .brand .s em{font-style:normal;font-size:11px;letter-spacing:.28em;color:var(--muted-on-ink)}
 .menu{display:flex;gap:40px;list-style:none;margin:0;padding:0;font-size:15px;letter-spacing:.08em}
-.menu a{text-decoration:none;color:#766654;padding:8px 0;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
-.menu a:hover,.menu a[aria-current="page"]{color:#4b3d2e;border-color:var(--gold)}
+.menu a{text-decoration:none;color:#8B7969;padding:8px 0;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+.menu a:hover,.menu a[aria-current="page"]{color:#2C211B;border-color:var(--gold)}
 
 /* ---------- Jewellery / Clothing the dropdown menus in the nav ----------
    These lists are filled in automatically by renderNavDropdowns() using
@@ -65,11 +65,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 .dropdown a{display:block;padding:10px 22px;font-size:13px;letter-spacing:.05em;white-space:nowrap;border-bottom:0!important}
 .dropdown a:hover{background:var(--sand-2)}
 .nav-right{display:flex;align-items:center;gap:22px}
-.cart-link{position:relative;display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:15px;letter-spacing:.08em;color:#4b3d2e;padding:8px 0}
+.cart-link{position:relative;display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:15px;letter-spacing:.08em;color:#2C211B;padding:8px 0}
 .cart-link svg{width:24px;height:24px}
 .badge{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--gold);color:var(--ink);font-size:12px;line-height:20px;text-align:center}
 .burger{all:unset;display:none;cursor:pointer;width:44px;height:44px;place-items:center}
-.burger span,.burger span::before,.burger span::after{display:block;width:24px;height:1.5px;background:#f6efe2;position:relative;content:""}
+.burger span,.burger span::before,.burger span::after{display:block;width:24px;height:1.5px;background:#2C211B;position:relative;content:""}
 .burger span::before{position:absolute;top:-7px}.burger span::after{position:absolute;top:7px}
 .burger:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
@@ -87,7 +87,7 @@ main:focus{outline:none}
 /* ---------- Home hero ---------- */
 .hero{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);min-height:calc(100svh - var(--nav-h))}
 .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px);align-items:flex-start}
-.wordmark{font-size:clamp(70px,9.6vw,172px);line-height:.95;letter-spacing:.01em;color:#4b3d2e;white-space:nowrap}
+.wordmark{font-size:clamp(70px,9.6vw,172px);line-height:.95;letter-spacing:.01em;color:#2C211B;white-space:nowrap}
 .wordmark.script{font-family:var(--script);font-size:clamp(110px,14vw,240px);line-height:.8}
 .lockup{display:flex;align-items:center;gap:18px;margin:34px 0 0;width:min(460px,100%);color:var(--gold)}
 .lockup i{flex:1;height:1px;background:currentColor;opacity:.75;transform-origin:left}
@@ -97,7 +97,7 @@ main:focus{outline:none}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
 .hero-media{position:relative;overflow:hidden;min-height:60vh}
 .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
-.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(74,59,42,.18),rgba(74,59,42,0) 30%)}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(44,33,27,.18),rgba(44,33,27,0) 30%)}
 @media (prefers-reduced-motion:no-preference){
   .lockup i{transform:scaleX(0);animation:draw 1.2s .3s cubic-bezier(.2,.7,.2,1) forwards}
   .hero-media img{clip-path:inset(0 0 0 100%);transform:scale(1.06);animation:reveal 1.5s .1s cubic-bezier(.7,0,.2,1) forwards}
@@ -176,10 +176,10 @@ main:focus{outline:none}
 .card{display:block;text-decoration:none;color:inherit;position:relative}
 .card .ph{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--sand-2)}
 .card.oos .ph img{opacity:.5}
-.tag-oos{position:absolute;top:14px;left:14px;z-index:2;background:#5a4936;color:#f8f1e6;font-size:12px;letter-spacing:.14em;padding:7px 13px}
+.tag-oos{position:absolute;top:14px;left:14px;z-index:2;background:#3d2f26;color:#F7F3ED;font-size:12px;letter-spacing:.14em;padding:7px 13px}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
 .card:hover img{transform:scale(1.04)}
-.card .quick{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(74,59,42,.92);color:#f8f1e6;font-size:14px;letter-spacing:.16em;transform:translateY(100%);transition:transform .4s}
+.card .quick{position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(44,33,27,.92);color:#F7F3ED;font-size:14px;letter-spacing:.16em;transform:translateY(100%);transition:transform .4s}
 .card:hover .quick,.card:focus-visible .quick{transform:none}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-top:18px}
 .card h3{font-size:clamp(24px,2vw,30px);line-height:1.15}
@@ -192,9 +192,9 @@ main:focus{outline:none}
 /* detail band */
 .detail{position:relative;min-height:80vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
 .detail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
-.detail::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(74,59,42,.72) 0%,rgba(74,59,42,.35) 32%,rgba(74,59,42,0) 62%)}
+.detail::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(44,33,27,.72) 0%,rgba(44,33,27,.35) 32%,rgba(44,33,27,0) 62%)}
 .detail .wrap{position:relative;z-index:2;padding-bottom:clamp(50px,7vw,100px)}
-.detail h2{font-size:clamp(38px,5.6vw,84px);line-height:1.05;max-width:16ch;color:#4b3d2e}
+.detail h2{font-size:clamp(38px,5.6vw,84px);line-height:1.05;max-width:16ch;color:#2C211B}
 .detail p{margin:22px 0 0;max-width:44ch;color:var(--text-on-ink)}
 
 /* steps */
@@ -319,12 +319,12 @@ form legend{font-family:var(--serif);font-size:30px;padding:0;margin-bottom:6px}
 
 /* ---------- Contact CTA + footer ---------- */
 .contact-cta{background:var(--sand-2);text-align:center;padding:clamp(80px,11vw,160px) 0}
-.contact-cta h2{font-size:clamp(34px,4.6vw,64px);line-height:1.1;margin:20px auto 0;max-width:18ch;color:#4b3d2e}
+.contact-cta h2{font-size:clamp(34px,4.6vw,64px);line-height:1.1;margin:20px auto 0;max-width:18ch;color:#2C211B}
 .contact-cta p.lead{margin:22px auto 0;max-width:42ch;color:var(--muted-on-ink)}
 .actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:40px}
-footer{background:var(--sand-2);border-top:1px solid rgba(146,118,83,.25);color:var(--muted-on-ink);padding:64px 0 0;font-size:15.5px}
+footer{background:var(--sand-2);border-top:1px solid rgba(180,154,114,.25);color:var(--muted-on-ink);padding:64px 0 0;font-size:15.5px}
 .fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:50px}
-footer h4{font-family:var(--serif);font-weight:400;font-size:22px;color:#4b3d2e;margin:0 0 16px}
+footer h4{font-family:var(--serif);font-weight:400;font-size:22px;color:#2C211B;margin:0 0 16px}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 footer a{text-decoration:none}
 footer a:hover{color:var(--gold-soft)}
@@ -332,10 +332,10 @@ footer .brand .w{font-size:50px}
 footer .brand img{height:40px;width:auto;display:block}
 .contact-list li{display:flex;gap:10px}
 .contact-list b{font-weight:400;color:var(--gold-soft);min-width:78px}
-.fbar{border-top:1px solid rgba(146,118,83,.22);padding:22px 0 26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:14px}
+.fbar{border-top:1px solid rgba(180,154,114,.22);padding:22px 0 26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:14px}
 .fbar nav{display:flex;gap:22px;flex-wrap:wrap}
 
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--sand-2);color:#4b3d2e;border:1px solid var(--gold);padding:14px 22px;z-index:80;transition:all .35s;display:flex;gap:18px;align-items:center;max-width:calc(100% - 32px);font-size:15.5px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--sand-2);color:#2C211B;border:1px solid var(--gold);padding:14px 22px;z-index:80;transition:all .35s;display:flex;gap:18px;align-items:center;max-width:calc(100% - 32px);font-size:15.5px}
 .toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .toast a{color:var(--gold-soft);white-space:nowrap}
 
@@ -354,13 +354,13 @@ footer .brand img{height:40px;width:auto;display:block}
   :root{--nav-h:68px}
   .brand .w{font-size:32px}
   .burger{display:grid}
-  .menu{position:absolute;top:calc(100% - 0px);left:0;right:0;flex-direction:column;gap:0;background:var(--sand-2);border-bottom:1px solid rgba(146,118,83,.25);padding:8px 20px 18px;display:none}
+  .menu{position:absolute;top:calc(100% - 0px);left:0;right:0;flex-direction:column;gap:0;background:var(--sand-2);border-bottom:1px solid rgba(180,154,114,.25);padding:8px 20px 18px;display:none}
   .menu.open{display:flex}
-  .menu a{display:block;padding:16px 0;font-size:18px;border-bottom:1px solid rgba(182,146,90,.18)}
+  .menu a{display:block;padding:16px 0;font-size:18px;border-bottom:1px solid rgba(180,154,114,.18)}
   /* On mobile there's no hover, so the dropdown just becomes a plain
      nested list under Jewellery / Clothing, always visible. */
   .dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:none;padding:0 0 6px 18px;display:block}
-  .dropdown a{padding:12px 0;font-size:15px;border-bottom:1px solid rgba(182,146,90,.12)!important}
+  .dropdown a{padding:12px 0;font-size:15px;border-bottom:1px solid rgba(180,154,114,.12)!important}
   .cart-link .t{display:none}
   .hero{grid-template-columns:1fr;min-height:0}
   .hero-media{order:-1;min-height:0;aspect-ratio:4/5}
@@ -389,170 +389,13 @@ footer .brand img{height:40px;width:auto;display:block}
 }
 </style>
 <style>
-/* Maroon readability refinement */
-:root{
-  --maroon:#641722;
-  --maroon-dark:#4b1018;
-  --maroon-mid:#7b2635;
-  --maroon-soft:#a94a5c;
-  --cream:#f8f0e3;
-  --cream-2:#efe1cf;
-  --cream-text:#35151b;
-}
-body{background:var(--cream);color:var(--cream-text);}
-button,.btn,.button,.cta,[type="button"],[type="submit"]{
-  background:var(--maroon);
-  color:#fff7ed;
-  border-color:var(--maroon);
-}
-button:hover,.btn:hover,.button:hover,.cta:hover,[type="button"]:hover,[type="submit"]:hover{
-  background:var(--maroon-dark);
-  color:#fff7ed;
-}
-a{color:var(--maroon);}
-a:hover{color:var(--maroon-dark);}
-nav a,.nav a,.navbar a{color:#fff7ed;}
-input,textarea,select{
-  color:var(--cream-text);
-  background:#fffaf3;
-}
-input::placeholder,textarea::placeholder{color:#80666a;opacity:1;}
-.card,.product-card,.modal,.checkout-card,.contact-card{
-  color:var(--cream-text);
-}
-</style>
-<style>
-/* Final unified maroon text treatment */
-:root{
-  --unified-maroon:#641722;
-  --unified-maroon-dark:#4b1018;
-}
-
-body,
-body *,
-main *,
-section *,
-article *,
-header *,
-footer *,
-nav *,
-aside *,
-.card *,
-.product-card *,
-.modal *,
-.checkout-card *,
-.contact-card * {
-  color: var(--unified-maroon) !important;
-}
-
-button,
-.btn,
-.button,
-.cta,
-a.button,
-a.btn,
-[type="button"],
-[type="submit"] {
-  color: #fff7ed !important;
-  background-color: var(--unified-maroon) !important;
-  border-color: var(--unified-maroon) !important;
-}
-
-button:hover,
-.btn:hover,
-.button:hover,
-.cta:hover,
-a.button:hover,
-a.btn:hover,
-[type="button"]:hover,
-[type="submit"]:hover {
-  color: #fff7ed !important;
-  background-color: var(--unified-maroon-dark) !important;
-  border-color: var(--unified-maroon-dark) !important;
-}
-
-/* Keep button text/icons white for readability */
-button *,
-.btn *,
-.button *,
-.cta *,
-a.button *,
-a.btn *,
-[type="button"] *,
-[type="submit"] * {
-  color: #fff7ed !important;
-}
-
-/* Form text and placeholders */
-input,
-textarea,
-select,
-option {
-  color: var(--unified-maroon) !important;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--unified-maroon) !important;
-  opacity: .65 !important;
-}
-
-/* SVG/icon strokes and fills */
-svg,
-svg *,
-i,
-.icon {
-  color: var(--unified-maroon) !important;
-}
-
-/* Navigation and links */
-a,
-nav a,
-.nav a,
-.navbar a {
-  color: var(--unified-maroon) !important;
-}
-
-/* Preserve white text where a dark maroon background is intentionally used */
-nav,
-.navbar,
-header,
-footer,
-.hero,
-.dark,
-[class*="dark"],
-[class*="maroon"] {
-  color: var(--unified-maroon) !important;
-}
-
-nav *,
-.navbar *,
-header *,
-footer *,
-.hero *,
-.dark *,
-[class*="dark"] *,
-[class*="maroon"] * {
-  color: var(--unified-maroon) !important;
-}
-
-/* Buttons remain the only intentionally white foreground */
-nav button, .navbar button, header button, footer button,
-.hero button, .dark button, [class*="dark"] button,
-nav .btn, .navbar .btn, header .btn, footer .btn,
-.hero .btn, .dark .btn, [class*="dark"] .btn {
-  color: #fff7ed !important;
-}
-</style>
-
-<style>
 /* ===================== Screenshot-matched landing page ===================== */
 :root{
-  --v2-bg:#f4efe7;
-  --v2-ink:#3b2d25;
-  --v2-muted:#75665a;
-  --v2-brown:#6a5547;
-  --v2-footer:#6b5547;
+  --v2-bg:#F7F3ED;
+  --v2-ink:#2C211B;
+  --v2-muted:#8B7969;
+  --v2-brown:#2C211B;
+  --v2-footer:#E8DED1;
 }
 body{background:var(--v2-bg)!important;color:var(--v2-ink)!important}
 .nav{
@@ -579,7 +422,7 @@ main{padding-top:84px!important}
 .v2-hero{display:grid;grid-template-columns:42% 58%;height:465px;overflow:hidden}
 .v2-hero-copy{padding:112px 40px 50px max(6vw,64px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .v2-kicker{font-family:var(--sans);font-size:11px;letter-spacing:.28em;margin:0 0 20px;color:var(--v2-ink)!important}
-.v2-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:48px;line-height:1.03;font-weight:400;letter-spacing:-.025em;margin:0;color:var(--v2-ink)!important}
+.v2-hero h1{font-family:var(--serif);font-size:48px;line-height:1.03;font-weight:400;letter-spacing:-.025em;margin:0;color:var(--v2-ink)!important}
 .v2-hero h1 em,.v2-story-copy h2 em{font-style:italic}
 .v2-lead{font-family:var(--sans);font-size:15px;line-height:1.65;margin:20px 0 26px;color:var(--v2-ink)!important}
 .v2-button{display:inline-flex;align-items:center;gap:14px;background:var(--v2-brown);color:#fff!important;text-decoration:none;padding:14px 22px;font-size:10px;letter-spacing:.22em}
@@ -594,28 +437,28 @@ main{padding-top:84px!important}
    on top of any photo, without needing the words baked into the image. */
 .v2-category::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,14,8,.58) 0%,rgba(20,14,8,.22) 42%,rgba(20,14,8,0) 68%);pointer-events:none}
 .v2-category-label{position:absolute;left:28px;bottom:24px;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.v2-category-title{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1;color:#fff!important}
+.v2-category-title{font-family:var(--serif);font-size:28px;line-height:1;color:#fff!important}
 .v2-category-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.24em;color:#fff!important}
 .v2-category-cta i{font-style:normal}
-.v2-trust{display:grid;grid-template-columns:repeat(4,1fr);margin:0 60px;padding:18px 0 30px;border-bottom:1px solid rgba(106,85,71,.22)}
-.v2-trust>div{min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid rgba(106,85,71,.22);text-align:center}
+.v2-trust{display:grid;grid-template-columns:repeat(4,1fr);margin:0 60px;padding:18px 0 30px;border-bottom:1px solid rgba(180,154,114,.22)}
+.v2-trust>div{min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid rgba(180,154,114,.22);text-align:center}
 .v2-trust>div:last-child{border-right:0}
-.v2-trust-icon{font-family:Georgia,serif;font-size:26px;line-height:1;color:var(--v2-ink);margin-bottom:6px}
+.v2-trust-icon{font-family:var(--serif);font-size:26px;line-height:1;color:var(--v2-ink);margin-bottom:6px}
 .v2-trust strong,.v2-trust small{font-family:var(--sans);font-weight:400;color:var(--v2-ink)!important}
 .v2-trust strong{font-size:12px;line-height:1.3}
 .v2-trust small{font-size:12px;line-height:1.3}
 .v2-story{display:grid;grid-template-columns:1fr 1.18fr 1fr;min-height:377px;margin-top:0}
 .v2-story-image{overflow:hidden}
 .v2-story-image img{width:100%;height:100%;object-fit:cover}
-.v2-story-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:45px 48px;background:#f7f2ea}
+.v2-story-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:45px 48px;background:#E8DED1}
 .v2-story-copy .v2-kicker{margin-bottom:18px;font-size:9px}
-.v2-story-copy h2{font-family:Georgia,"Times New Roman",serif;font-size:32px;line-height:1.02;font-weight:400;margin:0 0 20px;color:var(--v2-ink)!important}
+.v2-story-copy h2{font-family:var(--serif);font-size:32px;line-height:1.02;font-weight:400;margin:0 0 20px;color:var(--v2-ink)!important}
 .v2-story-copy>p:not(.v2-kicker){font-family:var(--sans);font-size:12px;line-height:1.65;margin:0 0 14px;color:var(--v2-ink)!important}
 .v2-story-copy .v2-button{margin-top:8px}
-.v2-footer{background:var(--v2-footer);color:#eee6dc!important;text-align:center;padding:46px 24px 42px}
-.v2-footer-line{height:1px;width:88px;background:rgba(238,230,220,.5);display:inline-block;vertical-align:middle;margin:0 22px}
-.v2-footer-brand{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:.35em;color:#eee6dc!important;vertical-align:middle}
-.v2-footer-sub{font-family:var(--sans);font-size:8px;letter-spacing:.28em;margin-top:10px;color:#eee6dc!important}
+.v2-footer{background:var(--v2-footer);color:#2C211B!important;text-align:center;padding:46px 24px 42px}
+.v2-footer-line{height:1px;width:88px;background:rgba(44,33,27,.5);display:inline-block;vertical-align:middle;margin:0 22px}
+.v2-footer-brand{display:inline-block;font-family:var(--sans);font-size:10px;letter-spacing:.35em;color:#2C211B!important;vertical-align:middle}
+.v2-footer-sub{font-family:var(--sans);font-size:8px;letter-spacing:.28em;margin-top:10px;color:#2C211B!important}
 @media(max-width:900px){
   .nav .wrap{width:calc(100% - 36px);height:68px}
   main{padding-top:68px!important}
@@ -640,7 +483,7 @@ main{padding-top:84px!important}
   .v2-categories{grid-template-columns:1fr;padding:18px 16px}
   .v2-trust{grid-template-columns:1fr 1fr;margin:0 16px}
   .v2-trust>div:nth-child(2){border-right:0}
-  .v2-trust>div{border-bottom:1px solid rgba(106,85,71,.22);padding:10px 0}
+  .v2-trust>div{border-bottom:1px solid rgba(180,154,114,.22);padding:10px 0}
   .v2-trust>div:nth-last-child(-n+2){border-bottom:0}
   .v2-story{grid-template-columns:1fr}
   .v2-story-copy{grid-column:1;grid-row:1}
@@ -648,13 +491,83 @@ main{padding-top:84px!important}
   .v2-footer-line{display:none}
 }
 </style>
+<style>
+/* ===== SH Branding Store palette: Ivory #F7F3ED / Beige #E8DED1 / Espresso #2C211B / Gold #B49A72 / Taupe #8B7969 / White ===== */
+:root{--espresso:#2C211B;--ivory:#F7F3ED;--beige:#E8DED1;--champagne:#B49A72;--taupe:#8B7969;--white:#FFFFFF}
+::selection{background:var(--champagne);color:var(--white)}
+body{font-size:16px;font-weight:400;background:var(--ivory)!important;color:var(--espresso)!important}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--espresso)}
+.nav{background:rgba(247,243,237,.97)!important;border-bottom:1px solid var(--beige)!important}
+.menu a{color:var(--espresso)!important;letter-spacing:.14em!important;font-size:12px!important;text-transform:uppercase}
+.menu a:hover,.menu a[aria-current="page"]{border-color:var(--champagne)!important}
+.dropdown{background:var(--white);border:1px solid var(--beige)}
+.dropdown a:hover{background:var(--ivory)}
+.nav-icon,.cart-link{color:var(--champagne)!important}
+.cart-link .badge{background:var(--espresso)!important;color:var(--ivory)!important}
+.burger span,.burger span::before,.burger span::after{background:var(--espresso)!important}
+/* buttons */
+.btn{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;background:var(--white);color:var(--espresso);border:1px solid var(--champagne)}
+.on-sand .btn{color:var(--espresso);border-color:var(--champagne)}
+.btn:hover,.on-sand .btn:hover{background:var(--espresso);color:var(--ivory);border-color:var(--espresso)}
+.btn.solid,.buy .btn:first-child,.summary .btn,#place,#csend{background:var(--espresso);color:var(--ivory);border-color:var(--espresso)}
+.btn.solid:hover,.buy .btn:first-child:hover,.summary .btn:hover,#place:hover,#csend:hover{background:var(--champagne);border-color:var(--champagne);color:var(--white)}
+.v2-button{background:var(--espresso)!important;color:var(--ivory)!important;font-size:10.5px!important;letter-spacing:.22em!important;transition:background .3s}
+.v2-button:hover{background:var(--champagne)!important}
+a{color:inherit}
+.crumbs a,.ccard a{border-color:var(--champagne)}
+.toast a,.toast{color:var(--espresso)}
+/* home */
+.v2-hero,.home-v2{background:var(--ivory)}
+.v2-hero h1{font-family:var(--serif)!important;color:var(--espresso)!important;letter-spacing:-.01em}
+.v2-kicker,.v2-lead{color:var(--espresso)!important}
+.v2-kicker{color:var(--champagne)!important}
+.v2-category-title{font-family:var(--serif)!important;color:#fff!important}
+.v2-trust{border-bottom:1px solid var(--beige)}
+.v2-trust>div{border-right:1px solid var(--beige)}
+.v2-trust-icon{color:var(--champagne)!important}
+.v2-trust strong,.v2-trust small{color:var(--espresso)!important}
+.v2-trust small{color:var(--taupe)!important}
+.v2-story-copy{background:var(--beige)!important}
+.v2-story-copy h2,.v2-story-copy>p:not(.v2-kicker){color:var(--espresso)!important}
+.v2-footer{background:var(--beige)!important;border-top:1px solid var(--champagne)}
+.v2-footer-brand,.v2-footer-sub{color:var(--espresso)!important}
+.v2-footer-line{background:var(--champagne)!important}
+/* sections & cards */
+.trust,.summary,.box,.notice,.contact-cta{background:var(--beige)}
+.notice{border-left:2px solid var(--champagne)}
+.sec-head,.line,.line:last-child,details.acc,details.acc:last-of-type,.steps li{border-color:var(--beige)}
+.steps li{border-top:1px solid var(--champagne)}
+.steps li::before,details.acc summary::after{color:var(--champagne)}
+.card .ph,.pdp-img,.pdp-gallery img{background:var(--white)}
+.card .quick,.tag-oos{background:var(--espresso);color:var(--ivory)}
+.card p,.page-head p,.sec-head p,.crumbs,.line .sub,.hint,.sum-note{color:var(--taupe)}
+.card .stock,.pdp .stock{color:var(--champagne)}
+.card .stock.oos,.pdp .stock.oos,.err{color:var(--err)}
+.tabs .tab,.chips .chip{background:var(--white);border-color:var(--beige);color:var(--taupe)}
+.tabs .tab:hover,.chips .chip:hover{border-color:var(--champagne);color:var(--espresso)}
+.tabs .tab.active,.chips .chip.active{background:var(--espresso);color:var(--ivory);border-color:var(--espresso)}
+.sizes span{background:var(--white);border-color:var(--beige)}
+.sizes input:checked + span{background:var(--espresso);color:var(--ivory);border-color:var(--espresso)}
+.sizes input:hover + span{border-color:var(--champagne)}
+.qty,.ccard,.pay{background:var(--white);border-color:var(--beige)}
+.qty button:hover{background:var(--beige)}
+.pay:has(input:checked){border-color:var(--champagne);box-shadow:inset 0 0 0 1px var(--champagne)}
+.f input,.f select,.f textarea{background:var(--white);border-color:var(--beige);color:var(--espresso);font-family:var(--sans)}
+.f input::placeholder,.f textarea::placeholder{color:var(--taupe);opacity:.8}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--champagne);border-color:var(--champagne)}
+.f [aria-invalid="true"]{border-color:var(--err)}
+.pay input,.check input{accent-color:var(--espresso)}
+.orderid{border-color:var(--champagne)}
+table.sz th,table.sz td{border-color:var(--beige)}
+:focus-visible{outline-color:var(--champagne)}
+</style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap">
     <a class="brand brand-image" href="#/" aria-label="SH Branding Store, home">
-      <img src="images/logo.png" alt="SH Branding Store">
+      <img src="images/logo1.png" alt="SH Branding Store">
     </a>
     <ul class="menu" id="menu">
       <li><a href="#/" data-nav="home">Home</a></li>
@@ -734,7 +647,7 @@ var TEXT = {
 
   trust: [
     { title:"Cash on delivery", text:"Pay when your order arrives" },
-    { title:"Free delivery", text:"In "+CONFIG.deliveryDays+", across the UAE" },
+    { title:"Free delivery over 100dhs", text:"In "+CONFIG.deliveryDays+", across the UAE" },
     { title:"Handpicked pieces", text:"Jewellery and clothing chosen with care" }
   ],
 
@@ -762,7 +675,7 @@ var TEXT = {
    ===================================================================== */
 var IMAGES = {
   // Logo (used in the top menu bar)
-  logo: "images/logo.png",
+  logo: "images/logo1.png",
 
   // Homepage
   heroBanner:        "images/sh.jpg",              // big photo at the top of the homepage
@@ -775,7 +688,7 @@ var IMAGES = {
   earrings: "images/jewellery/earrings/crystal-drop-earrings.jpeg",
   ring: "images/jewellery/rings/cz-floral-ring-hand.jpeg",
   bangle: "images/jewellery/bangles/pearl-charm-gold-bangle-01.jpeg",
-  anklet: "images/jewellery/anklets/gold-beaded-anklet-on-feet.jpeg",
+  anklet: "images/jewellery/kids/gold-beaded-anklet-on-feet.jpeg",
   greenPrintSet: "images/clothing/traditional-wear/green-print-kurta-set.jpeg",
   limeGreenSet: "images/clothing/traditional-wear/lime-green-kurta-set.jpeg",
   yellowFloralSet: "images/clothing/traditional-wear/yellow-floral-kurta-set.jpeg",
@@ -802,7 +715,7 @@ var CATEGORIES = {
       { key:"earrings",  label:"Earrings" },
       { key:"rings",     label:"Rings" },
       { key:"bangles",   label:"Bangles & Bracelets" },
-      { key:"anklets",   label:"Anklets" }
+      { key:"kids",   label:"kids" }
     ]
   },
   clothing: {
@@ -887,9 +800,9 @@ var PRODUCTS = [
 
   /* ---------------- Jewellery : Anklets ---------------- */
   { id:"gold-bead-anklet", name:"Gold Beaded Anklet", price:640, stock:4,
-    category:"jewellery", subcategory:"anklets",
+    category:"jewellery", subcategory:"kids",
     img: IMAGES.anklet,
-    gallery:["images/jewellery/anklets/gold-beaded-anklet-on-feet.jpeg","images/jewellery/anklets/black-bead-gold-anklet-on-feet.jpeg","images/jewellery/anklets/black-clover-charm-anklet.jpeg","images/jewellery/anklets/gold-charms-anklet.jpeg","images/jewellery/anklets/gold-chain-anklet-on-feet.jpeg","images/jewellery/anklets/butterfly-charm-anklet-on-feet.jpeg"],
+    gallery:["images/jewellery/kids/gold-beaded-anklet-on-feet.jpeg","images/jewellery/kids/black-bead-gold-anklet-on-feet.jpeg","images/jewellery/kids/black-clover-charm-anklet.jpeg","images/jewellery/kids/gold-charms-anklet.jpeg","images/jewellery/kids/gold-chain-anklet-on-feet.jpeg","images/jewellery/kids/butterfly-charm-anklet-on-feet.jpeg"],
     pos:"50% 46%",
     sizeOptions:["One Size"],
     sizes:{ "One Size":true },
@@ -949,12 +862,12 @@ PRODUCTS = [
   {id:"cz-floral-ring",name:"CZ Floral Ring",price:560,stock:0,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/cz-floral-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A floral crystal ring.",long:"A gold-tone floral ring with crystal detail.",details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]},
   {id:"v-shaped-crystal-ring",name:"V-Shaped Crystal Ring",price:560,stock:5,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/v-shaped-crystal-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A slim V-shaped crystal ring.",long:"A delicate gold-tone ring with a V-shaped crystal setting.",details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]},
   {id:"yellow-stone-ring",name:"Yellow Stone Ring",price:560,stock:5,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/yellow-stone-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A yellow stone ring with a gold-tone band.",long:"A gold-tone ring centred with a yellow stone.",details:["Gold-tone finish","Yellow stone detail","Available in ring sizes 5-9"]},
-  {id:"gold-beaded-anklet",name:"Gold Beaded Anklet",price:640,stock:4,category:"jewellery",subcategory:"anklets",img:"images/jewellery/anklets/gold-beaded-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold beaded anklet.",long:"A delicate anklet with gold-tone bead detail.",details:["Gold-tone finish","Adjustable clasp","One size"]},
-  {id:"black-bead-gold-anklet",name:"Black Bead Gold Anklet",price:640,stock:4,category:"jewellery",subcategory:"anklets",img:"images/jewellery/anklets/black-bead-gold-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A black bead and gold-tone anklet.",long:"A fine anklet with alternating black beads and gold-tone detail.",details:["Gold-tone finish","Black bead detail","One size"]},
-  {id:"black-clover-charm-anklet",name:"Black Clover Charm Anklet",price:640,stock:4,category:"jewellery",subcategory:"anklets",img:"images/jewellery/anklets/black-clover-charm-anklet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A black clover charm anklet.",long:"A gold-tone anklet finished with black clover charms.",details:["Gold-tone finish","Clover charm detail","One size"]},
-  {id:"gold-charms-anklet",name:"Gold Charms Anklet",price:640,stock:4,category:"jewellery",subcategory:"anklets",img:"images/jewellery/anklets/gold-charms-anklet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"An anklet with gold-tone charms.",long:"A fine gold-tone anklet with a row of delicate charms.",details:["Gold-tone finish","Charm detail","One size"]},
-  {id:"gold-chain-anklet",name:"Gold Chain Anklet",price:640,stock:4,category:"jewellery",subcategory:"anklets",img:"images/jewellery/anklets/gold-chain-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A simple gold chain anklet.",long:"A minimal gold-tone chain anklet for everyday styling.",details:["Gold-tone finish","Adjustable clasp","One size"]},
-  {id:"butterfly-charm-anklet",name:"Butterfly Charm Anklet",price:640,stock:4,category:"jewellery",subcategory:"anklets",img:"images/jewellery/anklets/butterfly-charm-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A butterfly charm anklet.",long:"A gold-tone anklet with a delicate butterfly charm.",details:["Gold-tone finish","Butterfly charm","One size"]},
+  {id:"gold-beaded-anklet",name:"Gold Beaded Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/gold-beaded-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold beaded anklet.",long:"A delicate anklet with gold-tone bead detail.",details:["Gold-tone finish","Adjustable clasp","One size"]},
+  {id:"black-bead-gold-anklet",name:"Black Bead Gold Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/black-bead-gold-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A black bead and gold-tone anklet.",long:"A fine anklet with alternating black beads and gold-tone detail.",details:["Gold-tone finish","Black bead detail","One size"]},
+  {id:"black-clover-charm-anklet",name:"Black Clover Charm Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/black-clover-charm-anklet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A black clover charm anklet.",long:"A gold-tone anklet finished with black clover charms.",details:["Gold-tone finish","Clover charm detail","One size"]},
+  {id:"gold-charms-anklet",name:"Gold Charms Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/gold-charms-anklet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"An anklet with gold-tone charms.",long:"A fine gold-tone anklet with a row of delicate charms.",details:["Gold-tone finish","Charm detail","One size"]},
+  {id:"gold-chain-anklet",name:"Gold Chain Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/gold-chain-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A simple gold chain anklet.",long:"A minimal gold-tone chain anklet for everyday styling.",details:["Gold-tone finish","Adjustable clasp","One size"]},
+  {id:"butterfly-charm-anklet",name:"Butterfly Charm Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/butterfly-charm-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A butterfly charm anklet.",long:"A gold-tone anklet with a delicate butterfly charm.",details:["Gold-tone finish","Butterfly charm","One size"]},
   {id:"multistrand-gold-bead-necklace",name:"Multistrand Gold Bead Necklace",price:480,stock:6,category:"jewellery",subcategory:"necklaces",img:"images/jewellery/necklaces/multistrand-gold-bead-necklace-model.jpeg",pos:"50% 42%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A layered gold bead necklace.",long:"A statement multistrand necklace with gold-tone bead detail.",details:["Gold-tone finish","Layered strands","One size"]},
   {id:"green-stone-gold-necklace",name:"Green Stone Gold Necklace",price:480,stock:6,category:"jewellery",subcategory:"necklaces",img:"images/jewellery/necklaces/green-stone-gold-necklace-model.jpeg",pos:"50% 42%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold-tone necklace with green stones.",long:"A gold-tone necklace finished with small green stone accents.",details:["Gold-tone finish","Green stone detail","One size"]},
   {id:"pearl-charm-gold-bangle",name:"Pearl Charm Gold Bangle",price:390,stock:7,category:"jewellery",subcategory:"bangles",img:"images/jewellery/bangles/pearl-charm-gold-bangle-01.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold bangle with pearl charms.",long:"A gold-tone bangle decorated with pearl and charm details.",details:["Gold-tone finish","Pearl charm detail","One size"]},
@@ -1172,7 +1085,7 @@ pages.collections=function(cat,sub){
   var list=valid?PRODUCTS.filter(function(p){return p.category===cat}):PRODUCTS;
   if(validSub) list=list.filter(function(p){return p.subcategory===sub});
   var label=valid?catInfo.label:"All collections";
-  var intro=cat==="jewellery"?"Gold-tone necklaces, earrings, rings, anklets and bangles, hand finished and gift boxed."
+  var intro=cat==="jewellery"?"Gold-tone necklaces, earrings, rings, kids anklets and bangles, hand finished and gift boxed."
     :cat==="clothing"?"Traditional wear and kurta sets, cut for an easy, elegant drape."
     :"Fine jewellery and luxury clothing in one collection. Select a piece to see the details, choose your size and order with cash on delivery.";
   function tab(key,text,href){return '<a class="tab'+(cat===key||(!valid&&!key)?' active':'')+'" href="'+href+'">'+text+'</a>'}
@@ -1218,7 +1131,7 @@ pages.piece=function(id){
     buyBlock=sizeBlock+
     '<div class="opt"><div class="opt-label"><span>Quantity</span></div><div class="qty"><button type="button" data-q="-1" aria-label="Decrease quantity">&minus;</button><output id="qv" aria-live="polite">1</output><button type="button" data-q="1" aria-label="Increase quantity">+</button></div></div>'+
     '<div class="buy"><button class="btn block" type="button" data-add="'+p.id+'">Add to cart</button><button class="btn block" type="button" data-buy="'+p.id+'">Buy now</button></div>'+
-    '<ul class="assure"><li>'+esc(pay.join(" or ").replace(/^./,function(c){return c.toUpperCase()}))+' available</li><li>Free delivery in '+esc(CONFIG.deliveryDays)+'</li></ul>';
+    '<ul class="assure"><li>'+esc(pay.join(" or ").replace(/^./,function(c){return c.toUpperCase()}))+' available</li><li> delivery in '+esc(CONFIG.deliveryDays)+'</li></ul>';
   }
   var sizeGuideBody=p.category==="jewellery"
     ? (oneSize?'<p>This piece is one size and designed to fit most. If you would like help choosing, message us on WhatsApp or Instagram and we will be happy to guide you.</p>'
@@ -1235,7 +1148,7 @@ pages.piece=function(id){
   '<div class="accs"><details class="acc" open><summary>About this '+noun+'</summary><div class="body"><p>'+esc(p.long)+'</p><ul>'+p.details.map(function(d){return '<li>'+esc(d)+'</li>'}).join('')+'</ul></div></details>'+
   '<details class="acc" id="size-guide"><summary>Size guide</summary><div class="body">'+sizeGuideBody+'</div></details>'+
   '<details class="acc"><summary>Care</summary><div class="body">'+careBody+'</div></details>'+
-  '<details class="acc"><summary>Delivery &amp; payment</summary><div class="body"><p>Delivery takes '+esc(CONFIG.deliveryDays)+' and is free across the UAE. You pay in cash to the courier when your order arrives.</p></div></details></div></div></div></div></div>'+
+  '<details class="acc"><summary>Delivery &amp; payment</summary><div class="body"><p>Delivery takes '+esc(CONFIG.deliveryDays)+' and is free across the UAE over 100dhs. You pay in cash to the courier when your order arrives.</p></div></details></div></div></div></div></div>'+
   '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>How to order</h2><p>Four steps, and you pay on delivery.</p></div>'+orderSteps()+'</div></section>'+
   '<section class="section on-sand" style="padding-top:0"><div class="wrap"><div class="sec-head"><h2>You may also like</h2><p></p></div><div class="cards" style="grid-template-columns:repeat(3,minmax(0,1fr))">'+others.map(card).join('')+'</div></div></section>', init:function(){
     var qty=1,root=$(".pdp");
@@ -1408,7 +1321,7 @@ function faqItems(){
   ["How do I place an order?","Choose a piece, select your size and add it to your cart. At checkout, enter your name, phone number and full address, then place your order. We will contact you to confirm."],
   ["How does cash on delivery work?","You do not pay online. When your order arrives, you pay the courier in cash. Please keep the exact amount ready."],
   ["How long does delivery take?","Delivery takes "+CONFIG.deliveryDays+" after your order is confirmed."],
-  ["How much is delivery?","Delivery is free on every order, across the UAE."],
+  ["How much is delivery?","Delivery is free on every order, across the UAE , over 100dhs."],
   ["How do I choose my size?","Our clothing comes in S, M, L, XL and XXL, and most jewellery is one size or comes in ring sizes 5 to 9. Choose the size closest to your usual clothing size, or message us if you would like help choosing."],
   ["Do you sell jewellery and clothing separately?","Yes. You can shop each collection on its own from the menu, or mix pieces from both in the same order and cart."],
   ["What if I am not home when the courier arrives?","The courier will call you first. Please keep your phone on and make sure the number you entered is correct."]
@@ -1455,7 +1368,7 @@ function policy(title,updated,sections){
 pages.shipping=function(){return policy("Shipping &amp; delivery","",[
  ["Where we deliver","<p>We deliver to all emirates in the United Arab Emirates. Please enter your complete address at checkout so our courier can find you.</p>"],
  ["Delivery time","<p>Orders are delivered in "+esc(CONFIG.deliveryDays)+" after we confirm them with you. Delivery times may be longer during sales and public holidays.</p>"],
- ["Delivery fee","<p>Delivery is free on every order, across the United Arab Emirates.</p>"],
+ ["Delivery fee","<p>Delivery is free on every order, across the United Arab Emirates over 100dhs.</p>"],
  ["Cash on delivery","<p>You pay the courier in cash when your order arrives. Please keep the exact amount ready. The courier will call you before arriving, so make sure your phone number is correct.</p>"],
  ["Order confirmation","<p>After you place your order, we contact you by phone or WhatsApp to confirm your details. Orders are dispatched once confirmed.</p>"],
  ["Missed deliveries","<p>If we cannot reach you or nobody is available to receive the order, we will try to arrange a second delivery. Repeated failed deliveries may lead to your order being cancelled.</p>"]])};
