@@ -587,6 +587,26 @@ main{padding-top:98px!important}
   .menu{top:80px!important}
   main{padding-top:80px!important}
 }
+<style>
+/* ===== Reviews section ===== */
+.reviews{background:var(--ivory);padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--beige)}
+.reviews .wrap{width:min(1100px,100% - 48px)}
+.rv-head{text-align:center;margin-bottom:40px}
+.rv-head .v2-kicker{margin:0 0 14px}
+.rv-head h2{font-size:clamp(30px,4vw,44px);line-height:1.1}
+.rv-score{display:inline-flex;align-items:center;gap:12px;margin-top:18px;font-size:14px;color:var(--taupe)}
+.rv-score b{font-family:var(--serif);font-weight:400;font-size:28px;color:var(--espresso)}
+.stars{color:var(--champagne);letter-spacing:.12em;font-size:16px;white-space:nowrap}
+.rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.rv-card{background:var(--white);border:1px solid var(--beige);padding:28px 26px;display:flex;flex-direction:column;gap:14px}
+.rv-card blockquote{margin:0;font-size:15px;line-height:1.7;color:var(--espresso);flex:1}
+.rv-title{font-family:var(--serif);font-size:20px;margin:0;color:var(--espresso)}
+.rv-by{display:flex;align-items:center;gap:12px;border-top:1px solid var(--beige);padding-top:14px;font-size:13px;color:var(--taupe)}
+.rv-av{width:38px;height:38px;border-radius:50%;background:var(--beige);color:var(--espresso);display:grid;place-items:center;font-family:var(--serif);font-size:17px;flex:none}
+.rv-by strong{display:block;font-weight:500;color:var(--espresso);font-size:14px}
+.rv-by em{font-style:normal;color:var(--champagne);font-size:11.5px;letter-spacing:.06em}
+.rv-cta{text-align:center;margin-top:36px}
+@media(max-width:900px){.rv-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -934,6 +954,19 @@ PRODUCTS = [
 ];
 /* ===================================================================== */
 
+/* =====================================================================
+   REVIEWS – shown in the "What our customers say" section on the homepage.
+   NOTE: the entries below are SAMPLE placeholders so you can see the layout.
+   Replace them with real reviews from your customers (WhatsApp / Instagram /
+   order feedback) before publishing. To add one, copy a { ... } line.
+   ===================================================================== */
+var REVIEWS = [
+  { name:"Aisha K.", place:"Dubai", stars:5, title:"Prettier in person", text:"I was nervous about ordering jewellery online, but the necklace looks even better than the photos. It came in a lovely pouch and I've already had three people ask where I got it.", item:"Multistrand Gold Bead Necklace" },
+  { name:"Fatima R.", place:"Sharjah", stars:3, title:"Great service", text:"I messaged on WhatsApp to ask about ring sizes and they replied within minutes and helped me pick. Size 7 fits perfectly and the stone really sparkles.", item:"V-Shaped Crystal Ring" },
+  { name:"Noor A.", place:"Ajman", stars:4, title:"Lovely earrings", text:"Very light, I forgot I was wearing them all day. The gold colour is nice and warm. Only wish there were more colours to choose from, but I will be ordering again.", item:"Crystal Drop Earrings" },
+  { name:"Sana P.", place:"Ras Al Khaimah", stars:5, title:"Worth every dirham", text:"The yellow floral set is beautiful and the trousers and dupatta match perfectly. Got so many compliments at my cousin's wedding. Cash on delivery made me feel safe ordering.", item:"Yellow Floral Kurta Set" },
+  { name:"Hiba M.", place:"Dubai", stars:5, title:"Cute anklet", text:"Bought the butterfly anklet as a gift for my sister and she loves it. Packed nicely and arrived on time. Good quality for the price.", item:"Butterfly Charm Anklet" }];
+
 (function(){
 "use strict";
 
@@ -1063,6 +1096,20 @@ function renderNavDropdowns(){
 }
 
 /* ---------- pages ---------- */
+function reviewsSection(){
+  var n=REVIEWS.length; if(!n)return '';
+  var avg=REVIEWS.reduce(function(a,r){return a+r.stars},0)/n;
+  function stars(k){return '<span class="stars" role="img" aria-label="'+k+' out of 5 stars">'+'★'.repeat(k)+'☆'.repeat(5-k)+'</span>'}
+  var cards=REVIEWS.map(function(r){
+    return '<article class="rv-card">'+stars(r.stars)+(r.title?'<h3 class="rv-title">'+esc(r.title)+'</h3>':'')+
+    '<blockquote>“'+esc(r.text)+'”</blockquote>'+
+    '<div class="rv-by"><span class="rv-av" aria-hidden="true">'+esc(r.name.charAt(0))+'</span><div><strong>'+esc(r.name)+(r.place?', '+esc(r.place):'')+'</strong>'+(r.item?'<em>'+esc(r.item).toUpperCase()+'</em>':'')+'</div></div></article>';
+  }).join('');
+  var cta=hasWA()?'<div class="rv-cta"><a class="btn" href="'+waLink("Hello SH Branding Store, I'd like to share a review of my order.")+'" target="_blank" rel="noopener">Share your review</a></div>':'';
+  return '<section class="reviews" aria-labelledby="rv-h"><div class="wrap"><div class="rv-head"><p class="v2-kicker">REVIEWS</p><h2 id="rv-h">What our customers say</h2>'+
+    '<div class="rv-score"><b>'+avg.toFixed(1)+'</b>'+stars(Math.round(avg))+'<span>'+n+' reviews</span></div></div>'+
+    '<div class="rv-grid">'+cards+'</div>'+cta+'</div></section>';
+}
 var pages={};
 
 pages.home=function(){
@@ -1108,6 +1155,7 @@ pages.home=function(){
       '</div>'+
       '<div class="v2-story-image"><img src="'+IMAGES.storyJewellery+'" alt="Jewellery pieces in a stone dish"></div>'+
     '</section>'+
+    reviewsSection()+
   '</div>'};
 };
 pages.collections=function(cat,sub){
