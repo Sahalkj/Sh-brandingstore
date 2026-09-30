@@ -608,10 +608,42 @@ main{padding-top:98px!important}
 .rv-cta{text-align:center;margin-top:36px}
 @media(max-width:900px){.rv-grid{grid-template-columns:1fr}}
 </style>
+<style>
+/* ===== Announcement bar + Hiba hero ===== */
+:root{--bar-h:40px;--nav-h:calc(98px + var(--bar-h))}
+.announce{height:var(--bar-h);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 10px;background:#8FA998;color:#fff;font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
+.announce p{margin:0;line-height:1.2;flex:0 1 auto}
+.announce-btn{background:none;border:0;color:#fff;font-size:24px;line-height:1;cursor:pointer;padding:0 10px}
+main{padding-top:var(--nav-h)!important}
+.v2-hero{width:100%;height:min(56.25vw,calc(100svh - var(--nav-h)))!important;min-height:440px}
+.v2-hero-image img{object-position:center 40%!important}
+.v2-hero-copy{position:absolute!important;left:0;bottom:0;width:48%!important;height:auto!important;padding:0 24px max(3.2vw,36px) max(5.5vw,48px)!important;justify-content:flex-end!important}
+@media(min-width:901px){
+  .v2-hero-image::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 0% 100%,rgba(247,243,237,.98) 0%,rgba(247,243,237,.94) 50%,rgba(247,243,237,0) 100%),linear-gradient(90deg,rgba(247,243,237,.92) 0%,rgba(247,243,237,.7) 16%,rgba(247,243,237,.3) 32%,rgba(247,243,237,0) 48%)}
+}
+.v2-hero h1{font-size:clamp(30px,3vw,44px)}
+.v2-lead{font-size:clamp(13px,1.05vw,16px);margin:10px 0 18px!important;max-width:38ch}
+.v2-lead strong{font-weight:600}
+@media(max-width:900px){
+  :root{--nav-h:calc(80px + var(--bar-h))}
+  .announce{font-size:11px;letter-spacing:.1em;gap:6px}
+  .menu{top:80px!important}
+  .v2-hero{height:auto!important;min-height:0}
+  .v2-hero-image{height:auto!important;aspect-ratio:16/9;max-height:none}
+  .v2-hero-image img{object-position:center!important}
+  .v2-hero-copy{position:relative!important;width:100%!important;padding:32px 24px 44px!important;background:var(--ivory)}
+  .v2-lead{max-width:none}
+}
+</style>
 </head>
 <body>
 
 <header class="nav">
+  <div class="announce" role="region" aria-label="Announcements">
+    <button class="announce-btn" type="button" id="annPrev" aria-label="Previous announcement">&#8249;</button>
+    <p id="annText">Free delivery on all orders above 100 AED</p>
+    <button class="announce-btn" type="button" id="annNext" aria-label="Next announcement">&#8250;</button>
+  </div>
   <div class="wrap">
     <a class="brand brand-image" href="#/" aria-label="SH Branding Store, home">
       <img src="images/logo1.png" alt="SH Branding Store">
@@ -725,7 +757,7 @@ var IMAGES = {
   logo: "images/logo1.png",
 
   // Homepage
-  heroBanner:        "images/sh.jpg",              // big photo at the top of the homepage
+  heroBanner:        "images/hiba.jpg",              // big photo at the top of the homepage
   categoryJewellery: "images/jewellery.jpg", // "Jewellery" photo card on the homepage
   categoryClothing:  "images/clothing.jpg",  // "Clothing" photo card on the homepage
   storyClothing:     "images/story-clothing.jpg",  // "Our story" section – left photo
@@ -911,7 +943,8 @@ var PRODUCTS = [
     long:"A comfortable motif-print kurta shown in mustard, navy, maroon, green and red colourways. The gallery includes full-length and detail views.",
     details:["Motif print","V-neck with decorative placket","Three-quarter sleeves","Available in five sizes"] }
 ];
-/* Each supplied photo is listed below as its own purchasable product. */
+
+/* Existing individual products. */
 PRODUCTS = [
   {id:"cz-floral-ring",name:"CZ Floral Ring",price:560,stock:0,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/cz-floral-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A floral crystal ring.",long:"A gold-tone floral ring with crystal detail.",details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]},
   {id:"v-shaped-crystal-ring",name:"V-Shaped Crystal Ring",price:560,stock:5,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/v-shaped-crystal-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A slim V-shaped crystal ring.",long:"A delicate gold-tone ring with a V-shaped crystal setting.",details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]},
@@ -952,6 +985,114 @@ PRODUCTS = [
   {id:"red-motif-kurta",name:"Red Motif Kurta",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/red-motif-kurta.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A red motif-print kurta.",long:"A red kurta with motif print and decorative neckline.",details:["Motif print","Three-quarter sleeves","Available in five sizes"]},
   {id:"green-motif-kurta-detail",name:"Green Motif Kurta Detail",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/green-motif-kurta-detail.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A green motif-print kurta.",long:"A green kurta shown with a detailed neckline view.",details:["Motif print","Decorative neckline","Available in five sizes"]}
 ];
+
+function suppliedPhotoProduct(id, name, subcategory, img, price) {
+  return {
+    id:id, name:name, price:price, stock:5,
+    category:"jewellery", subcategory:subcategory, img:img, pos:"50% 50%",
+    sizeOptions:["One Size"], sizes:{"One Size":true},
+    short:"A gold-tone "+name.toLowerCase()+".",
+    long:"A polished gold-tone "+name.toLowerCase()+" designed for easy everyday styling.",
+    details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+  };
+}
+
+/* Each supplied photo is listed below as its own purchasable product. */
+PRODUCTS.push(
+  suppliedPhotoProduct("golden-floral-filigree-bangle","Golden Floral Filigree Bangle","bangles","images/jewellery/bangles/golden-floral-filigree-bangle.jpg",390),
+  suppliedPhotoProduct("black-enamel-pave-bangle","Black Enamel Pave Bangle","bangles","images/jewellery/bangles/black-enamel-pave-bangle.jpg",390),
+  suppliedPhotoProduct("crystal-flower-bangle","Crystal Flower Bangle","bangles","images/jewellery/bangles/crystal-flower-bangle.jpg",390),
+  suppliedPhotoProduct("five-stone-pave-bangle","Five Stone Pave Bangle","bangles","images/jewellery/bangles/five-stone-pave-bangle.jpg",390),
+  suppliedPhotoProduct("herringbone-gold-bangle","Herringbone Gold Bangle","bangles","images/jewellery/bangles/herringbone-gold-bangle.jpg",390),
+  suppliedPhotoProduct("black-heart-ribbed-bangle","Black Heart Ribbed Bangle","bangles","images/jewellery/bangles/black-heart-ribbed-bangle.jpg",390),
+  suppliedPhotoProduct("ribbed-gold-cuff-bangle","Ribbed Gold Cuff Bangle","bangles","images/jewellery/bangles/ribbed-gold-cuff-bangle.jpg",390),
+  suppliedPhotoProduct("black-rectangle-charm-bangle","Black Rectangle Charm Bangle","bangles","images/jewellery/bangles/black-rectangle-charm-bangle.jpg",390),
+  suppliedPhotoProduct("emerald-crystal-bangle","Emerald Crystal Bangle","bangles","images/jewellery/bangles/emerald-crystal-bangle.jpg",390),
+  suppliedPhotoProduct("rose-gold-square-crystal-bangle","Rose Gold Square Crystal Bangle","bangles","images/jewellery/bangles/rose-gold-square-crystal-bangle.jpg",390),
+  suppliedPhotoProduct("crystal-line-bangle","Crystal Line Bangle","bangles","images/jewellery/bangles/crystal-line-bangle.jpg",390),
+  suppliedPhotoProduct("black-and-pearl-clover-bangle","Black and Pearl Clover Bangle","bangles","images/jewellery/bangles/black-and-pearl-clover-bangle.jpg",390),
+  suppliedPhotoProduct("crystal-clasp-bangle","Crystal Clasp Bangle","bangles","images/jewellery/bangles/crystal-clasp-bangle.jpg",390),
+  suppliedPhotoProduct("emerald-bar-bangle","Emerald Bar Bangle","bangles","images/jewellery/bangles/emerald-bar-bangle.jpg",390),
+  suppliedPhotoProduct("triangle-crystal-bangle","Triangle Crystal Bangle","bangles","images/jewellery/bangles/triangle-crystal-bangle.jpg",390),
+  suppliedPhotoProduct("rainbow-heart-charm-bangle","Rainbow Heart Charm Bangle","bangles","images/jewellery/bangles/rainbow-heart-charm-bangle.jpg",390),
+  suppliedPhotoProduct("crystal-leaf-open-bangle","Crystal Leaf Open Bangle","bangles","images/jewellery/bangles/crystal-leaf-open-bangle.jpg",390),
+  suppliedPhotoProduct("rainbow-stone-bangle","Rainbow Stone Bangle","bangles","images/jewellery/bangles/rainbow-stone-bangle.jpg",390),
+  suppliedPhotoProduct("crystal-floral-bangle","Crystal Floral Bangle","bangles","images/jewellery/bangles/crystal-floral-bangle.jpg",390),
+  suppliedPhotoProduct("arrow-crystal-bangle","Arrow Crystal Bangle","bangles","images/jewellery/bangles/arrow-crystal-bangle.jpg",390),
+  suppliedPhotoProduct("triple-line-open-bangle","Triple Line Open Bangle","bangles","images/jewellery/bangles/triple-line-open-bangle.jpg",390),
+  suppliedPhotoProduct("gold-floral-cuff-bangle","Gold Floral Cuff Bangle","bangles","images/jewellery/bangles/gold-floral-cuff-bangle.jpg",390),
+  suppliedPhotoProduct("pearl-butterfly-bracelet","Pearl Butterfly Bracelet","bracelets","images/jewellery/bracelets/pearl-butterfly-bracelet.jpg",280),
+  suppliedPhotoProduct("minimal-heart-bracelet","Minimal Heart Bracelet","bracelets","images/jewellery/bracelets/minimal-heart-bracelet.jpg",280),
+  suppliedPhotoProduct("fine-gold-chain-bracelet","Fine Gold Chain Bracelet","bracelets","images/jewellery/bracelets/fine-gold-chain-bracelet.jpg",280),
+  suppliedPhotoProduct("black-clover-bracelet","Black Clover Bracelet","bracelets","images/jewellery/bracelets/black-clover-bracelet.jpg",280),
+  suppliedPhotoProduct("gold-bead-charm-bracelet","Gold Bead Charm Bracelet","bracelets","images/jewellery/bracelets/gold-bead-charm-bracelet.jpg",280),
+  suppliedPhotoProduct("crystal-bow-bracelet","Crystal Bow Bracelet","bracelets","images/jewellery/bracelets/crystal-bow-bracelet.jpg",280),
+  suppliedPhotoProduct("ruby-crystal-bracelet","Ruby Crystal Bracelet","bracelets","images/jewellery/bracelets/ruby-crystal-bracelet.jpg",280),
+  suppliedPhotoProduct("dangling-heart-bracelet","Dangling Heart Bracelet","bracelets","images/jewellery/bracelets/dangling-heart-bracelet.jpg",280),
+  suppliedPhotoProduct("black-pearl-charm-bracelet","Black Pearl Charm Bracelet","bracelets","images/jewellery/bracelets/black-pearl-charm-bracelet.jpg",280),
+  suppliedPhotoProduct("green-crystal-floral-bracelet","Green Crystal Floral Bracelet","bracelets","images/jewellery/bracelets/green-crystal-floral-bracelet.jpg",280),
+  suppliedPhotoProduct("crystal-butterfly-bracelet","Crystal Butterfly Bracelet","bracelets","images/jewellery/bracelets/crystal-butterfly-bracelet.jpg",280),
+  suppliedPhotoProduct("burgundy-crystal-bracelet","Burgundy Crystal Bracelet","bracelets","images/jewellery/bracelets/burgundy-crystal-bracelet.jpg",280),
+  suppliedPhotoProduct("rainbow-crystal-bracelet","Rainbow Crystal Bracelet","bracelets","images/jewellery/bracelets/rainbow-crystal-bracelet.jpg",280),
+  suppliedPhotoProduct("heart-outline-bracelet","Heart Outline Bracelet","bracelets","images/jewellery/bracelets/heart-outline-bracelet.jpg",280),
+  suppliedPhotoProduct("gold-charm-bracelet","Gold Charm Bracelet","bracelets","images/jewellery/bracelets/gold-charm-bracelet.jpg",280),
+  suppliedPhotoProduct("teardrop-charm-bracelet","Teardrop Charm Bracelet","bracelets","images/jewellery/bracelets/teardrop-charm-bracelet.jpg",280),
+  suppliedPhotoProduct("green-crystal-station-bracelet","Green Crystal Station Bracelet","bracelets","images/jewellery/bracelets/green-crystal-station-bracelet.jpg",280),
+  suppliedPhotoProduct("star-chain-bracelet","Star Chain Bracelet","bracelets","images/jewellery/bracelets/star-chain-bracelet.jpg",280),
+  suppliedPhotoProduct("black-clover-station-bracelet","Black Clover Station Bracelet","bracelets","images/jewellery/bracelets/black-clover-station-bracelet.jpg",280),
+  suppliedPhotoProduct("crystal-charm-cluster-bracelet","Crystal Charm Cluster Bracelet","bracelets","images/jewellery/bracelets/crystal-charm-cluster-bracelet.jpg",280),
+  suppliedPhotoProduct("black-circle-bracelet","Black Circle Bracelet","bracelets","images/jewellery/bracelets/black-circle-bracelet.jpg",280),
+  suppliedPhotoProduct("crystal-flower-station-bracelet","Crystal Flower Station Bracelet","bracelets","images/jewellery/bracelets/crystal-flower-station-bracelet.jpg",280),
+  suppliedPhotoProduct("mama-heart-bracelet","Mama Heart Bracelet","bracelets","images/jewellery/bracelets/mama-heart-bracelet.jpg",280),
+  suppliedPhotoProduct("twisted-gold-bracelet","Twisted Gold Bracelet","bracelets","images/jewellery/bracelets/twisted-gold-bracelet.jpg",280),
+  suppliedPhotoProduct("crystal-station-bracelet","Crystal Station Bracelet","bracelets","images/jewellery/bracelets/crystal-station-bracelet.jpg",280),
+  suppliedPhotoProduct("heart-drop-bracelet","Heart Drop Bracelet","bracelets","images/jewellery/bracelets/heart-drop-bracelet.jpg",280),
+  suppliedPhotoProduct("heart-charm-bracelet","Heart Charm Bracelet","bracelets","images/jewellery/bracelets/heart-charm-bracelet.jpg",280),
+  suppliedPhotoProduct("green-stone-station-bracelet","Green Stone Station Bracelet","bracelets","images/jewellery/bracelets/green-stone-station-bracelet.jpg",280),
+  suppliedPhotoProduct("multicolour-teardrop-bracelet","Multicolour Teardrop Bracelet","bracelets","images/jewellery/bracelets/multicolour-teardrop-bracelet.jpg",280),
+  suppliedPhotoProduct("gold-flower-bracelet","Gold Flower Bracelet","bracelets","images/jewellery/bracelets/gold-flower-bracelet.jpg",280),
+  suppliedPhotoProduct("gold-flower-chain-bracelet","Gold Flower Chain Bracelet","bracelets","images/jewellery/bracelets/gold-flower-chain-bracelet.jpg",280),
+  suppliedPhotoProduct("sapphire-bead-necklace","Sapphire Bead Necklace","neck-chains","images/jewellery/necklaces/sapphire-bead-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-butterfly-pendant-necklace","Crystal Butterfly Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-butterfly-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("pearl-station-charm-necklace","Pearl Station Charm Necklace","neck-chains","images/jewellery/necklaces/pearl-station-charm-necklace.jpg",480),
+  suppliedPhotoProduct("gold-bead-station-necklace","Gold Bead Station Necklace","neck-chains","images/jewellery/necklaces/gold-bead-station-necklace.jpg",480),
+  suppliedPhotoProduct("gold-box-chain-necklace","Gold Box Chain Necklace","neck-chains","images/jewellery/necklaces/gold-box-chain-necklace.jpg",480),
+  suppliedPhotoProduct("gold-bow-pendant-necklace","Gold Bow Pendant Necklace","neck-chains","images/jewellery/necklaces/gold-bow-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("gold-snake-chain-necklace","Gold Snake Chain Necklace","neck-chains","images/jewellery/necklaces/gold-snake-chain-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-initial-a-necklace","Crystal Initial A Necklace","neck-chains","images/jewellery/necklaces/crystal-initial-a-necklace.jpg",480),
+  suppliedPhotoProduct("multicolour-charm-necklace","Multicolour Charm Necklace","neck-chains","images/jewellery/necklaces/multicolour-charm-necklace.jpg",480),
+  suppliedPhotoProduct("gold-letter-charm-necklace","Gold Letter Charm Necklace","neck-chains","images/jewellery/necklaces/gold-letter-charm-necklace.jpg",480),
+  suppliedPhotoProduct("gold-initial-k-necklace","Gold Initial K Necklace","neck-chains","images/jewellery/necklaces/gold-initial-k-necklace.jpg",480),
+  suppliedPhotoProduct("key-charm-necklace","Key Charm Necklace","neck-chains","images/jewellery/necklaces/key-charm-necklace.jpg",480),
+  suppliedPhotoProduct("heart-bow-necklace","Heart Bow Necklace","neck-chains","images/jewellery/necklaces/heart-bow-necklace.jpg",480),
+  suppliedPhotoProduct("butterfly-charm-necklace","Butterfly Charm Necklace","neck-chains","images/jewellery/necklaces/butterfly-charm-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-charm-pendant-necklace","Crystal Charm Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-charm-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("gold-heart-pendant-necklace","Gold Heart Pendant Necklace","neck-chains","images/jewellery/necklaces/gold-heart-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("infinity-pendant-necklace","Infinity Pendant Necklace","neck-chains","images/jewellery/necklaces/infinity-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-charm-necklace","Crystal Charm Necklace","neck-chains","images/jewellery/necklaces/crystal-charm-necklace.jpg",480),
+  suppliedPhotoProduct("floral-charm-necklace","Floral Charm Necklace","neck-chains","images/jewellery/necklaces/floral-charm-necklace.jpg",480),
+  suppliedPhotoProduct("butterfly-drop-necklace","Butterfly Drop Necklace","neck-chains","images/jewellery/necklaces/butterfly-drop-necklace.jpg",480),
+  suppliedPhotoProduct("gold-bar-necklace","Gold Bar Necklace","neck-chains","images/jewellery/necklaces/gold-bar-necklace.jpg",480),
+  suppliedPhotoProduct("round-coin-pendant-necklace","Round Coin Pendant Necklace","neck-chains","images/jewellery/necklaces/round-coin-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("oval-medallion-necklace","Oval Medallion Necklace","neck-chains","images/jewellery/necklaces/oval-medallion-necklace.jpg",480),
+  suppliedPhotoProduct("heart-knot-necklace","Heart Knot Necklace","neck-chains","images/jewellery/necklaces/heart-knot-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-y-drop-necklace","Crystal Y Drop Necklace","neck-chains","images/jewellery/necklaces/crystal-y-drop-necklace.jpg",480),
+  suppliedPhotoProduct("green-heart-station-necklace","Green Heart Station Necklace","neck-chains","images/jewellery/necklaces/green-heart-station-necklace.jpg",480),
+  suppliedPhotoProduct("gold-star-station-necklace","Gold Star Station Necklace","neck-chains","images/jewellery/necklaces/gold-star-station-necklace.jpg",480),
+  suppliedPhotoProduct("gold-star-drop-necklace","Gold Star Drop Necklace","neck-chains","images/jewellery/necklaces/gold-star-drop-necklace.jpg",480),
+  suppliedPhotoProduct("gold-bow-necklace","Gold Bow Necklace","neck-chains","images/jewellery/necklaces/gold-bow-necklace.jpg",480),
+  suppliedPhotoProduct("black-tassel-pendant-necklace","Black Tassel Pendant Necklace","neck-chains","images/jewellery/necklaces/black-tassel-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("double-chain-heart-necklace","Double Chain Heart Necklace","neck-chains","images/jewellery/necklaces/double-chain-heart-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-solitaire-necklace","Crystal Solitaire Necklace","neck-chains","images/jewellery/necklaces/crystal-solitaire-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-drop-necklace","Crystal Drop Necklace","neck-chains","images/jewellery/necklaces/crystal-drop-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-flower-pendant-necklace","Crystal Flower Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-flower-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("gold-flower-pendant-necklace","Gold Flower Pendant Necklace","neck-chains","images/jewellery/necklaces/gold-flower-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("heart-outline-pendant-necklace","Heart Outline Pendant Necklace","neck-chains","images/jewellery/necklaces/heart-outline-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-bar-pendant-necklace","Crystal Bar Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-bar-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-charm-drop-necklace","Crystal Charm Drop Necklace","neck-chains","images/jewellery/necklaces/crystal-charm-drop-necklace.jpg",480),
+  suppliedPhotoProduct("crystal-heart-pendant-necklace","Crystal Heart Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-heart-pendant-necklace.jpg",480),
+  suppliedPhotoProduct("heart-crystal-pendant-necklace","Heart Crystal Pendant Necklace","neck-chains","images/jewellery/necklaces/heart-crystal-pendant-necklace.jpg",480)
+);
 /* ===================================================================== */
 
 /* =====================================================================
@@ -1117,12 +1258,11 @@ pages.home=function(){
   '<div class="home-v2">'+
     '<section class="v2-hero">'+
       '<div class="v2-hero-copy">'+
-        '<p class="v2-kicker">JEWELLERY + CLOTHING</p>'+
-        '<h1>Timeless Pieces<br>for Every <em>You</em></h1>'+
-        '<p class="v2-lead">Elegant jewellery. Effortless clothing.<br>All in one place.</p>'+
+        '<h1>Hello, I\'m <em>Hiba!</em></h1>'+
+        '<p class="v2-lead"><strong>The face behind Sh Branding Store.</strong><br>A little dream, a lot of love, and a passion for timeless elegance.</p>'+
         '<a class="v2-button" href="#/collections">SHOP NOW <span>→</span></a>'+
       '</div>'+
-      '<div class="v2-hero-image"><img src="'+IMAGES.heroBanner+'" alt="Elegant jewellery and clothing"></div>'+
+      '<div class="v2-hero-image"><img src="'+IMAGES.heroBanner+'" alt="Hiba, the face behind Sh Branding Store"></div>'+
     '</section>'+
     /* The two photo cards below use a PLAIN photo (no text baked into the
        image itself). The "Jewellery"/"Clothing" title and "SHOP NOW" link
@@ -1503,6 +1643,16 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("#menu").
 /* validate cart against products (in case products changed) */
 cart=cart.filter(function(l){return byId(l.id)&&l.qty>0});
 renderFooter(); renderNavDropdowns(); updateBadge(); route(); flushQueue();
+})();
+</script>
+<script>
+(function(){
+  var msgs=["Free delivery on all orders above 100 AED","Cash on delivery available across the UAE"],i=0,t=document.getElementById("annText");
+  if(!t)return;
+  function show(n){i=(n+msgs.length)%msgs.length;t.textContent=msgs[i]}
+  document.getElementById("annPrev").addEventListener("click",function(){show(i-1)});
+  document.getElementById("annNext").addEventListener("click",function(){show(i+1)});
+  setInterval(function(){show(i+1)},5000);
 })();
 </script>
 </body>
