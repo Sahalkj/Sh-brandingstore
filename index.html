@@ -634,6 +634,26 @@ main{padding-top:var(--nav-h)!important}
   .v2-hero-copy{position:relative!important;width:100%!important;padding:32px 24px 44px!important;background:var(--ivory)}
   .v2-lead{max-width:none}
 }
+/* ---------- Product editor (#/admin) ---------- */
+.a-bar{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-bottom:18px}
+.a-bar input{flex:0 1 340px;min-width:200px;height:48px;padding:0 16px;border:1px solid var(--line);background:var(--field-bg);font:inherit;font-size:15px;color:var(--text-on-sand)}
+#aStatus{font-size:14px;color:var(--gold-deep)}
+#aStatus.err{color:var(--err)}
+.a-scroll{overflow-x:auto;border:1px solid var(--line);background:var(--field-bg)}
+.a-table{width:100%;border-collapse:collapse;min-width:640px;font-size:15px}
+.a-table th{text-align:left;font-weight:500;letter-spacing:.08em;font-size:12.5px;text-transform:uppercase;color:var(--taupe);padding:14px 16px;border-bottom:1px solid var(--line);background:var(--sand-2);position:sticky;top:0}
+.a-table td{padding:10px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+.a-table tr:last-child td{border-bottom:0}
+.a-table tr.edited td{background:rgba(180,154,114,.12)}
+.a-table td input{width:100%;min-width:90px;height:42px;padding:0 12px;border:1px solid var(--line);background:#fff;font:inherit;font-size:15px;color:var(--text-on-sand)}
+.a-table td:nth-child(2) input,.a-table td:nth-child(3) input{max-width:130px}
+.a-table td input.bad{border-color:var(--err);background:#fbefed}
+.a-prod{display:flex;align-items:center;gap:14px}
+.a-prod img{width:52px;height:52px;object-fit:cover;flex:none;border:1px solid var(--line)}
+.a-prod strong{display:block;font-weight:500;line-height:1.3}
+.a-prod small{display:block;color:var(--taupe);font-size:12.5px;letter-spacing:.04em}
+.a-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+.a-out{width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.5;padding:14px;border:1px solid var(--line);background:#fff;color:var(--text-on-sand);resize:vertical}
 </style>
 </head>
 <body>
@@ -683,6 +703,21 @@ main{padding-top:var(--nav-h)!important}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+/* =====================================================================
+   QUICK GUIDE – read me first
+   Everything you normally change is in the 6 blocks below, in this order:
+     1. CONFIG      – phone, WhatsApp, email, delivery days
+     2. TEXT        – wording on the homepage
+     3. IMAGES      – homepage photos
+     4. CATEGORIES  – the menu / filter names (Rings, Bangles, Kurta ...)
+     5. PRODUCTS    – your items. Add a product = add ONE line.
+     6. REVIEWS     – customer reviews
+   Rules: keep the quotes "like this" and the commas, only change the words.
+   After editing, save the file and refresh the page in your browser.
+   If the page goes blank, a comma or quote is missing – press F12 to see
+   which line has the error, or undo your last change.
+   ===================================================================== */
+
 /* =====================================================================
    EDIT THIS SECTION – your shop settings and contact details
    ===================================================================== */
@@ -738,40 +773,19 @@ var TEXT = {
 };
 
 /* =====================================================================
-   IMAGES – every photo the website uses, all in one place.
+   IMAGES – the main photos of the website (not products – those are above).
 
-   HOW TO CHANGE A PHOTO
-   1. Put your new image file inside the "images" folder.
-   2. Change the path on the right of the matching line below to that
-      file's name, e.g.  heroBanner: "images/clothing/traditional-wear/green-print-kurta-set.jpeg"
-
-   HOW TO ADD A BRAND NEW PHOTO (e.g. for one specific product)
-   1. Put the file in the "images" folder.
-   2. Add ONE new line anywhere in this list, e.g.:
-        necklaceGold: "images/jewellery/necklaces/multistrand-gold-bead-necklace-model.jpeg",
-   3. Use that name (the part before the colon) in a product's "img"
-      field down in the PRODUCTS list below, e.g.  img: IMAGES.necklaceGold
+   TO CHANGE A PHOTO: put the new file in the "images" folder, then change
+   the file name on the right of the matching line below.
    ===================================================================== */
 var IMAGES = {
-  // Logo (used in the top menu bar)
-  logo: "images/logo1.png",
+  logo: "images/logo1.png",                 // logo in the top menu bar
 
-  // Homepage
-  heroBanner:        "images/hiba.jpg",              // big photo at the top of the homepage
-  categoryJewellery: "images/jewellery.jpg", // "Jewellery" photo card on the homepage
-  categoryClothing:  "images/clothing.jpg",  // "Clothing" photo card on the homepage
-  storyClothing:     "images/story-clothing.jpg",  // "Our story" section – left photo
-  storyJewellery:    "images/story-jewellery.jpg", // "Our story" section – right photo
-
-  necklace: "images/jewellery/necklaces/multistrand-gold-bead-necklace-model.jpeg",
-  earrings: "images/jewellery/earrings/crystal-drop-earrings.jpeg",
-  ring: "images/jewellery/rings/cz-floral-ring-hand.jpeg",
-  bangle: "images/jewellery/bangles/pearl-charm-gold-bangle-01.jpeg",
-  anklet: "images/jewellery/kids/gold-beaded-anklet-on-feet.jpeg",
-  greenPrintSet: "images/clothing/traditional-wear/green-print-kurta-set.jpeg",
-  limeGreenSet: "images/clothing/traditional-wear/lime-green-kurta-set.jpeg",
-  yellowFloralSet: "images/clothing/traditional-wear/yellow-floral-kurta-set.jpeg",
-  mustardMotifKurta: "images/clothing/kurta-sets/mustard-motif-kurta.jpeg"
+  heroBanner:        "images/hiba1.jpg",    // big photo at the top of the homepage
+  categoryJewellery: "images/jewellery.jpg",// "Jewellery" photo card on the homepage
+  categoryClothing:  "images/clothing.jpg", // "Clothing" photo card on the homepage
+  storyClothing:     "images/story-clothing.jpg",   // "Our story" – left photo
+  storyJewellery:    "images/story-jewellery.jpg"   // "Our story" – right photo
 };
 
 /* =====================================================================
@@ -792,7 +806,10 @@ var CATEGORIES = {
     subcategories: [
       { key:"neck-chains", label:"Neck Chains" },
       { key:"rings",       label:"Rings" },
-      { key:"bangles",     label:"Bangles" },
+      { key:"bangles",     label:"Bangles", children:[
+          { key:"adult-bangles", label:"Adult Bangles" },
+          { key:"baby-bangles",  label:"Baby Bangles" }
+        ] },
       { key:"bracelets",   label:"Bracelet" },
       { key:"earrings",    label:"Earrings" },
       { key:"anklets",     label:"Anklets" },
@@ -814,286 +831,524 @@ var CATEGORIES = {
 };
 
 /* =====================================================================
-   PRODUCTS – every item you sell.
+   PRODUCTS – everything you sell.            (this is the part you will edit most)
 
-   HOW TO ADD A NEW PRODUCT
-   Copy one whole { ... } block below (from the { to the matching },
-   including a product from the category you want), paste it either
-   above or below, then change:
-     id           – a short unique web address for this piece, no spaces
-                    (letters, numbers and dashes only), e.g. "gold-hoops"
-     name         – shown to customers
-     price        – the number shown to customers (in CONFIG.currency)
-     stock        – how many you have ready to ship. Set to 0 to
-                    automatically show "Sold out" everywhere on the site
-     category     – must be exactly "jewellery" or "clothing"
-     subcategory  – must exactly match a "key" from CATEGORIES above
-     img          – which photo to use; pick one from IMAGES above,
-                    e.g.  img: IMAGES.necklace
-     sizeOptions / sizes – the size or option list for this piece.
-                    Jewellery is often ["One Size"]; rings use numeric
-                    sizes; clothing typically uses S–XXL.
-     short / long / details – the product's description text
+   ★ HOW TO ADD A NEW PRODUCT (takes 30 seconds)
+   1. Put the photo in the right folder inside "images"
+      (e.g. images/jewellery/rings/my-new-ring.jpg).
+   2. Find the group below that matches (Rings, Bangles, Kurta ...) and add
+      ONE new line at the end of that group's list, before the closing ]);
+          ["Name shown to customers", "my-new-ring.jpg"],
+      → the last line of a list has NO comma at the end; all the others do.
+   3. Save. Done – price, sizes, stock and wording come from the group.
+
+   ★ DIFFERENT PRICE / STOCK / SIZES FOR ONE PIECE?
+   Add a third part to that product's line:
+          ["Gold Hoops", "gold-hoops.jpg", { price:350, stock:2 }],
+   You can use:  price, stock, sizes, pos, desc, gallery, id
+          stock:0           → shows "Sold out" automatically
+          sizes:["S","M"]   → only these sizes are offered
+          desc:"Your own description sentence."
+          pos:"50% 30%"     → which part of the photo is centred (x% y%)
+          gallery:["a.jpg","b.jpg"]  → extra photos on the product page
+
+   ★ BRAND NEW GROUP (new price or new type of item)?
+   Copy a whole addProducts({ ... }, [ ... ]); block, paste it below the last
+   one and change the settings at the top:
+          category    – "jewellery" or "clothing"
+          subcategory – a "key" from CATEGORIES above
+          folder      – the images folder for these photos
+          price / stock / sizes – the defaults for every product in the group
+          style       – a word used in the auto description ("gold-tone")
+          note        – the sentence added to the long description
+          details     – the bullet points shown on the product page
+
+   ★ TO REMOVE A PRODUCT: delete its line.  To hide it for a while:
+     set stock:0 (shows "Sold out") or put // at the start of the line.
    ===================================================================== */
-var PRODUCTS = [
-  /* ---------------- Jewellery : Necklaces ---------------- */
-  { id:"aurelia-necklace", name:"Multistrand Gold Bead Necklace", price:480, stock:6,
-    category:"jewellery", subcategory:"neck-chains",
-    img: IMAGES.necklace,
-    gallery:["images/jewellery/necklaces/multistrand-gold-bead-necklace-model.jpeg","images/jewellery/necklaces/green-stone-gold-necklace-model.jpeg"],
-    pos:"50% 42%",
-    sizeOptions:["One Size"],
-    sizes:{ "One Size":true },
-    short:"A fine gold-tone chain finished with a hand-set round pendant.",
-    long:"A delicate gold-tone chain that sits close to the collarbone, finished with a hand-set round pendant. Simple enough for every day, refined enough for evenings.",
-    details:["18k gold-plated brass chain","Hand-set round pendant","Adjustable clasp, one size fits most","Comes in a SH Branding Store gift pouch"] },
+var PRODUCTS = [];
 
-  /* ---------------- Jewellery : Earrings ---------------- */
-  { id:"petale-earrings", name:"Crystal Drop Earrings", price:320, stock:8,
-    category:"jewellery", subcategory:"earrings",
-    img: IMAGES.earrings,
-    gallery:["images/jewellery/earrings/crystal-drop-earrings.jpeg","images/jewellery/earrings/gold-heart-stud-earrings.jpeg","images/jewellery/earrings/ridged-heart-stud-earrings.jpeg"],
-    pos:"50% 40%",
-    sizeOptions:["One Size"],
-    sizes:{ "One Size":true },
-    short:"Softly curved gold hoops with a light, faceted drop.",
-    long:"Softly curved gold-tone hoops finished with a small faceted drop that catches the light with every movement. Lightweight enough for all-day wear.",
-    details:["18k gold-plated brass","Secure hinged hoop with drop detail","Lightweight, all-day comfortable","Comes in a SH Branding Store gift pouch"] },
+/* ---------- RINGS – 560 AED (66 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"rings",
+  folder:"images/jewellery/rings/",
+  price:50, stock:5,
+  sizes:["5","6","7","8","9"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]
+}, [
+  ["Petal Crystal Ring", "petal-crystal-ring.jpg"],
+  ["Crown Solitaire Ring", "crown-solitaire-ring.jpg"],
+  ["Twisted Loop Crystal Ring", "twisted-loop-crystal-ring.jpg"],
+  ["Shooting Star Crystal Ring", "shooting-star-crystal-ring.jpg"],
+  ["Wave Crystal Ring", "wave-crystal-ring.jpg"],
+  ["Baguette Solitaire Ring", "baguette-solitaire-ring.jpg"],
+  ["Butterfly Crystal Ring", "butterfly-crystal-ring.jpg"],
+  ["Star Crystal Stack Ring", "star-crystal-stack-ring.jpg"],
+  ["Heart Crystal Ring", "heart-crystal-ring.jpg"],
+  ["Flower Solitaire Ring", "flower-solitaire-ring.jpg"],
+  ["Arrow Crystal Ring", "arrow-crystal-ring.jpg"],
+  ["Diamond Shape Crystal Ring", "diamond-shape-crystal-ring.jpg"],
+  ["Bow Crystal Ring", "bow-crystal-ring.jpg"],
+  ["Lilac Beaded Solitaire Ring", "lilac-beaded-solitaire-ring.jpg"],
+  ["Pink Beaded Solitaire Ring", "pink-beaded-solitaire-ring.jpg"],
+  ["Orange Beaded Solitaire Ring", "orange-beaded-solitaire-ring.jpg"],
+  ["Yellow Beaded Solitaire Ring", "yellow-beaded-solitaire-ring.jpg"],
+  ["Blue Pear Crystal Ring", "blue-pear-crystal-ring.jpg"],
+  ["Ruby Pear Crystal Ring", "ruby-pear-crystal-ring.jpg"],
+  ["Red Heart Beaded Ring", "red-heart-beaded-ring.jpg"],
+  ["Pink Heart Beaded Ring", "pink-heart-beaded-ring.jpg"],
+  ["Orange Baguette Beaded Ring", "orange-baguette-beaded-ring.jpg"],
+  ["Purple Baguette Beaded Ring", "purple-baguette-beaded-ring.jpg"],
+  ["Opal Marquise Twin Ring", "opal-marquise-twin-ring.jpg"],
+  ["Pink Marquise Twin Ring", "pink-marquise-twin-ring.jpg"],
+  ["Pink Square Beaded Ring", "pink-square-beaded-ring.jpg"],
+  ["White Square Beaded Ring", "white-square-beaded-ring.jpg"],
+  ["Star Orange Baguette Double Ring", "star-orange-baguette-double-ring.jpg"],
+  ["Star Pearl Double Band Ring", "star-pearl-double-band-ring.jpg"],
+  ["Wavy Gold Statement Ring", "wavy-gold-statement-ring.jpg"],
+  ["Oval Link Gold Ring", "oval-link-gold-ring.jpg"],
+  ["Crystal Bow Band Ring", "crystal-bow-band-ring.jpg"],
+  ["Layered Swirl Gold Ring", "layered-swirl-gold-ring.jpg"],
+  ["Hammered Dot Wide Ring", "hammered-dot-wide-ring.jpg"],
+  ["Molten Wave Gold Ring", "molten-wave-gold-ring.jpg"],
+  ["Crystal Flower Crown Ring", "crystal-flower-crown-ring.jpg"],
+  ["Crystal Leaf Band Ring", "crystal-leaf-band-ring.jpg"],
+  ["Black Round Engraved Ring", "black-round-engraved-ring.jpg"],
+  ["Halo Crystal Medallion Ring", "halo-crystal-medallion-ring.jpg"],
+  ["Crossover Crystal Ring", "crossover-crystal-ring.jpg"],
+  ["Amethyst Baguette Stack Ring", "amethyst-baguette-stack-ring.jpg"],
+  ["Opal Butterfly Crystal Ring", "opal-butterfly-crystal-ring.jpg"],
+  ["V Crystal Chevron Ring", "v-crystal-chevron-ring.jpg"],
+  ["Orange Round Solitaire Ring", "orange-round-solitaire-ring.jpg"],
+  ["Garnet Heart Wrap Ring", "garnet-heart-wrap-ring.jpg"],
+  ["Yellow Oval Beaded Ring", "yellow-oval-beaded-ring.jpg"],
+  ["Purple Infinity Crystal Ring", "purple-infinity-crystal-ring.jpg"],
+  ["Pink Heart Solitaire Ring", "pink-heart-solitaire-ring.jpg"],
+  ["Lilac Heart Wrap Ring", "lilac-heart-wrap-ring.jpg"],
+  ["Garnet Round Solitaire Ring", "garnet-round-solitaire-ring.jpg"],
+  ["Teardrop Gold Wrap Ring", "teardrop-gold-wrap-ring.jpg"],
+  ["Laurel Leaf Gold Ring", "laurel-leaf-gold-ring.jpg"],
+  ["Triple Bead Gold Ring", "triple-bead-gold-ring.jpg"],
+  ["Open Leaf Gold Ring", "open-leaf-gold-ring.jpg"],
+  ["Pink Emerald Cut Ring", "pink-emerald-cut-ring.jpg"],
+  ["Heart Bow Gold Ring", "heart-bow-gold-ring.jpg"],
+  ["Open Flower Gold Ring", "open-flower-gold-ring.jpg"],
+  ["Ribbon Bow Gold Ring", "ribbon-bow-gold-ring.jpg"],
+  ["Heart Link Crystal Ring", "heart-link-crystal-ring.jpg"],
+  ["Open Heart Gold Ring", "open-heart-gold-ring.jpg"],
+  ["Rose Cutout Gold Ring", "rose-cutout-gold-ring.jpg"],
+  ["Black Round Onyx Ring", "black-round-onyx-ring.jpg"],
+  ["Black Clover Onyx Ring", "black-clover-onyx-ring.jpg"],
+  ["Black Star Onyx Ring", "black-star-onyx-ring.jpg"],
+  ["Black Square Onyx Ring", "black-square-onyx-ring.jpg"],
+  ["Black Triangle Onyx Ring", "black-triangle-onyx-ring.jpg"]
+]);
 
-  /* ---------------- Jewellery : Rings ---------------- */
-  { id:"solitaire-ring", name:"CZ Floral Ring", price:560, stock:5,
-    category:"jewellery", subcategory:"rings",
-    img: IMAGES.ring,
-    gallery:["images/jewellery/rings/cz-floral-ring-hand.jpeg","images/jewellery/rings/v-shaped-crystal-ring-hand.jpeg","images/jewellery/rings/yellow-stone-ring-hand.jpeg"],
-    pos:"50% 55%",
-    sizeOptions:["5","6","7","8","9"],
-    sizes:{ "5":true, "6":true, "7":true, "8":true, "9":true },
-    short:"A faceted centre stone on a slim gold-tone band.",
-    long:"A faceted centre stone set on a slim, comfortable gold-tone band. A quiet statement piece that pairs equally well with everyday layers or evening dressing.",
-    details:["18k gold-plated brass band","Faceted cubic zirconia centre stone","Available in ring sizes 5–9","Comes in a SH Branding Store gift pouch"] },
+/* ---------- KIDS ANKLETS – 640 AED (6 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"kids",
+  folder:"images/jewellery/kids/",
+  price:40, stock:4,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Gold Beaded Anklet", "gold-beaded-anklet-on-feet.jpeg"],
+  ["Black Bead Gold Anklet", "black-bead-gold-anklet-on-feet.jpeg"],
+  ["Black Clover Charm Anklet", "black-clover-charm-anklet.jpeg"],
+  ["Gold Charms Anklet", "gold-charms-anklet.jpeg"],
+  ["Gold Chain Anklet", "gold-chain-anklet-on-feet.jpeg"],
+  ["Butterfly Charm Anklet", "butterfly-charm-anklet-on-feet.jpeg"]
+]);
 
-  /* ---------------- Jewellery : Bangles & Bracelets ---------------- */
-  { id:"mirage-bangle", name:"Pearl Charm Gold Bangle", price:390, stock:7,
-    category:"jewellery", subcategory:"bangles",
-    img: IMAGES.bangle,
-    gallery:["images/jewellery/bangles/pearl-charm-gold-bangle-01.jpeg","images/jewellery/bangles/pearl-charm-gold-bangle-02.jpeg","images/jewellery/bangles/blue-bead-gold-bangle.jpeg","images/jewellery/bangles/blue-floral-charm-bangle.jpeg"],
-    pos:"50% 50%",
-    sizeOptions:["One Size"],
-    sizes:{ "One Size":true },
-    short:"A polished gold-tone bangle finished with a fine studded edge.",
-    long:"A polished gold-tone bangle finished with a fine line of studded detail. Wear it alone for a clean look, or stack it with your own pieces.",
-    details:["18k gold-plated brass","Slip-on fit, one size","Studded edge detail","Comes in a SH Branding Store gift pouch"] },
+/* ---------- NECKLACES – 480 AED (2 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"neck-chains",
+  folder:"images/jewellery/necklaces/",
+  price:40, stock:6,
+  sizes:["One Size"], pos:"50% 42%",
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Multistrand Gold Bead Necklace", "multistrand-gold-bead-necklace-model.jpeg"],
+  ["Green Stone Gold Necklace", "green-stone-gold-necklace-model.jpeg"]
+]);
 
-  /* ---------------- Jewellery : Anklets ---------------- */
-  { id:"gold-bead-anklet", name:"Gold Beaded Anklet", price:640, stock:4,
-    category:"jewellery", subcategory:"kids",
-    img: IMAGES.anklet,
-    gallery:["images/jewellery/kids/gold-beaded-anklet-on-feet.jpeg","images/jewellery/kids/black-bead-gold-anklet-on-feet.jpeg","images/jewellery/kids/black-clover-charm-anklet.jpeg","images/jewellery/kids/gold-charms-anklet.jpeg","images/jewellery/kids/gold-chain-anklet-on-feet.jpeg","images/jewellery/kids/butterfly-charm-anklet-on-feet.jpeg"],
-    pos:"50% 46%",
-    sizeOptions:["One Size"],
-    sizes:{ "One Size":true },
-    short:"A fine gold-tone anklet with delicate bead and charm detail.",
-    long:"A light gold-tone anklet designed to add a subtle finish to everyday or occasion looks. The collection includes bead, clover and butterfly charm styles.",
-    details:["Gold-tone finish","Adjustable clasp","One size fits most","Comes in a SH Branding Store gift pouch"] },
+/* ---------- BANGLES – 390 AED (4 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"bangles",
+  folder:"images/jewellery/bangles/",
+  price:90, stock:7,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Pearl Charm Gold Bangle", "pearl-charm-gold-bangle-01.jpeg"],
+  ["Blue Pearl Charm Bangle", "pearl-charm-gold-bangle-02.jpeg"],
+  ["Blue Bead Gold Bangle", "blue-bead-gold-bangle.jpeg"],
+  ["Blue Floral Charm Bangle", "blue-floral-charm-bangle.jpeg"]
+]);
 
-  /* ---------------- Clothing : Traditional Wear ---------------- */
-  { id:"golden-kaftan", name:"Green Print Kurta Set", price:850, stock:6,
-    category:"clothing", subcategory:"kurta",
-    img: IMAGES.greenPrintSet,
-    gallery:["images/clothing/traditional-wear/green-print-kurta-set.jpeg","images/clothing/traditional-wear/pink-print-kurta-set.jpeg","images/clothing/traditional-wear/ivory-print-kurta-set.jpeg","images/clothing/traditional-wear/blue-print-kurta-set.jpeg"],
-    pos:"50% 40%",
-    sizeOptions:["S","M","L","XL","XXL"],
-    sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
-    short:"A printed kurta set with a matching dupatta for an easy traditional look.",
-    long:"A coordinated printed kurta set with a matching dupatta. Designed for a relaxed, elegant fit that works for daytime gatherings and festive occasions.",
-    details:["Printed kurta and matching dupatta","Relaxed silhouette","Comfortable three-quarter sleeves","Available in five sizes"] },
+/* ---------- EARRINGS – 320 AED (31 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"earrings",
+  folder:"images/jewellery/earrings/",
+  price:20, stock:8,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Crystal Drop Earrings", "crystal-drop-earrings.jpeg"],
+  ["Gold Heart Stud Earrings", "gold-heart-stud-earrings.jpeg"],
+  ["Ridged Heart Stud Earrings", "ridged-heart-stud-earrings.jpeg"],
+  ["Open Heart Crystal Stud Earrings", "open-heart-crystal-stud-earrings.jpg"],
+  ["Puffy Heart Crystal Drop Earrings", "puffy-heart-crystal-drop-earrings.jpg"],
+  ["Baguette Crystal Textured Earrings", "baguette-crystal-textured-earrings.jpg"],
+  ["Knot Crystal Teardrop Earrings", "knot-crystal-teardrop-earrings.jpg"],
+  ["Solid Heart Stud Earrings", "solid-heart-stud-earrings.jpg"],
+  ["Butterfly Outline Stud Earrings", "butterfly-outline-stud-earrings.jpg"],
+  ["Tiered Scallop Earrings", "tiered-scallop-earrings.jpg"],
+  ["Textured Crescent Hoop Earrings", "textured-crescent-hoop-earrings.jpg"],
+  ["Petal Flower Stud Earrings", "petal-flower-stud-earrings.jpg"],
+  ["Twisted Oval Hoop Earrings", "twisted-oval-hoop-earrings.jpg"],
+  ["Rope Twist Open Hoop Earrings", "rope-twist-open-hoop-earrings.jpg"],
+  ["Diamond Pattern Hoop Earrings", "diamond-pattern-hoop-earrings.jpg"],
+  ["Hammered Oval Hoop Earrings", "hammered-oval-hoop-earrings.jpg"],
+  ["Layered Oval Hoop Earrings", "layered-oval-hoop-earrings.jpg"],
+  ["Tricolour Wing Stud Earrings", "tricolour-wing-stud-earrings.jpg"],
+  ["Crystal Butterfly Huggie Earrings", "crystal-butterfly-huggie-earrings.jpg"],
+  ["Triple Band Drop Earrings", "triple-band-drop-earrings.jpg"],
+  ["Evil Eye Heart Earrings", "evil-eye-heart-earrings.jpg"],
+  ["Beaded Heart Hoop Earrings", "beaded-heart-hoop-earrings.jpg"],
+  ["Tulip Stud Earrings", "tulip-stud-earrings.jpg"],
+  ["Solid Flower Stud Earrings", "solid-flower-stud-earrings.jpg"],
+  ["Double Circle Stud Earrings", "double-circle-stud-earrings.jpg"],
+  ["Filigree Butterfly Stud Earrings", "filigree-butterfly-stud-earrings.jpg"],
+  ["Cutout Butterfly Stud Earrings", "cutout-butterfly-stud-earrings.jpg"],
+  ["Lotus Flower Stud Earrings", "lotus-flower-stud-earrings.jpg"],
+  ["Triple Star Stud Earrings", "triple-star-stud-earrings.jpg"],
+  ["Triple Hoop Cuff Earrings", "triple-hoop-cuff-earrings.jpg"],
+  ["Spiral Stud Earrings", "spiral-stud-earrings.jpg"]
+]);
 
-  { id:"noor-abaya", name:"Lime Green Kurta Set", price:920, stock:5,
-    category:"clothing", subcategory:"kurta",
-    img: IMAGES.limeGreenSet,
-    gallery:["images/clothing/traditional-wear/lime-green-kurta-set.jpeg","images/clothing/traditional-wear/navy-print-kurta-set.jpeg","images/clothing/traditional-wear/mustard-print-kurta-set.jpeg","images/clothing/traditional-wear/emerald-green-kurta-set.jpeg","images/clothing/traditional-wear/maroon-print-kurta-set.jpeg"],
-    pos:"50% 38%",
-    sizeOptions:["S","M","L","XL","XXL"],
-    sizes:{ S:true, M:true, L:true, XL:true, XXL:true },
-    short:"A bright kurta set with a matching dupatta and a flowing, comfortable drape.",
-    long:"A coordinated lime-green kurta set made for easy occasion dressing. The set is shown in several print and colour variations in the product gallery.",
-    details:["Kurta and matching dupatta","Relaxed, flowing silhouette","Three-quarter sleeves","Available in five sizes"] },
+/* ---------- KURTA – 850 AED (9 pieces) ---------- */
+addProducts({
+  category:"clothing", subcategory:"kurta",
+  folder:"images/clothing/traditional-wear/",
+  price:50, stock:6,
+  sizes:["S","M","L","XL","XXL"], pos:"50% 40%",
+  style:"",
+  note:"A comfortable, easy fit for everyday and occasion wear.",
+  details:["Traditional print","Matching set","Available in five sizes"]
+}, [
+  ["Green Print Kurta Set", "green-print-kurta-set.jpeg"],
+  ["Pink Print Kurta Set", "pink-print-kurta-set.jpeg"],
+  ["Ivory Print Kurta Set", "ivory-print-kurta-set.jpeg"],
+  ["Blue Print Kurta Set", "blue-print-kurta-set.jpeg"],
+  ["Lime Green Kurta Set", "lime-green-kurta-set.jpeg"],
+  ["Navy Print Kurta Set", "navy-print-kurta-set.jpeg"],
+  ["Mustard Print Kurta Set", "mustard-print-kurta-set.jpeg"],
+  ["Emerald Green Kurta Set", "emerald-green-kurta-set.jpeg"],
+  ["Maroon Print Kurta Set", "maroon-print-kurta-set.jpeg"]
+]);
 
-  /* ---------------- Clothing : Traditional Wear ---------------- */
-  { id:"valencia-gown", name:"Yellow Floral Kurta Set", price:1150, stock:4,
-    category:"clothing", subcategory:"kurta",
-    img: IMAGES.yellowFloralSet,
-    gallery:["images/clothing/traditional-wear/yellow-floral-kurta-set.jpeg","images/clothing/traditional-wear/blue-floral-kurta-set.jpeg","images/clothing/traditional-wear/red-floral-kurta-set.jpeg","images/clothing/traditional-wear/black-floral-kurta-set.jpeg"],
-    pos:"50% 32%",
-    sizeOptions:["S","M","L","XL"],
-    sizes:{ S:true, M:true, L:true, XL:true },
-    short:"A floral kurta set with matching trousers and a printed dupatta.",
-    long:"A printed three-piece kurta set that pairs a floral tunic with coordinated trousers and dupatta. The gallery shows the available colour combinations.",
-    details:["Kurta, trousers and dupatta","Floral print","Comfortable straight-cut fit","Available in four sizes"] },
+/* ---------- 3 PCS SETS – 1150 AED (4 pieces) ---------- */
+addProducts({
+  category:"clothing", subcategory:"3-pcs-sets",
+  folder:"images/clothing/traditional-wear/",
+  price:50, stock:4,
+  sizes:["S","M","L","XL","XXL"], pos:"50% 40%",
+  style:"",
+  note:"A comfortable, easy fit for everyday and occasion wear.",
+  details:["Traditional print","Matching set","Available in five sizes"]
+}, [
+  ["Yellow Floral Kurta Set", "yellow-floral-kurta-set.jpeg"],
+  ["Blue Floral Kurta Set", "blue-floral-kurta-set.jpeg"],
+  ["Red Floral Kurta Set", "red-floral-kurta-set.jpeg"],
+  ["Black Floral Kurta Set", "black-floral-kurta-set.jpeg"]
+]);
 
-  /* ---------------- Clothing : Kurta Sets ---------------- */
-  { id:"satin-clutch", name:"Mustard Motif Kurta", price:280, stock:9,
-    category:"clothing", subcategory:"kurta",
-    img: IMAGES.mustardMotifKurta,
-    gallery:["images/clothing/kurta-sets/mustard-motif-kurta.jpeg","images/clothing/kurta-sets/navy-motif-kurta.jpeg","images/clothing/kurta-sets/maroon-motif-kurta.jpeg","images/clothing/kurta-sets/mustard-motif-kurta-detail.jpeg","images/clothing/kurta-sets/green-motif-kurta.jpeg","images/clothing/kurta-sets/red-motif-kurta.jpeg","images/clothing/kurta-sets/green-motif-kurta-detail.jpeg"],
-    pos:"50% 45%",
-    sizeOptions:["One Size"],
-    sizes:{ "One Size":true },
-    short:"A motif-print kurta with a clean V-neck and decorative placket detail.",
-    long:"A comfortable motif-print kurta shown in mustard, navy, maroon, green and red colourways. The gallery includes full-length and detail views.",
-    details:["Motif print","V-neck with decorative placket","Three-quarter sleeves","Available in five sizes"] }
-];
+/* ---------- KURTA – 280 AED (7 pieces) ---------- */
+addProducts({
+  category:"clothing", subcategory:"kurta",
+  folder:"images/clothing/kurta-sets/",
+  price:2, stock:3,
+  sizes:["S","M","L","XL","XXL"], pos:"50% 45%",
+  style:"",
+  note:"A comfortable, easy fit for everyday and occasion wear.",
+  details:["Traditional print","Matching set","Available in five sizes"]
+}, [
+  ["Mustard Motif Kurta", "mustard-motif-kurta.jpeg"],
+  ["Navy Motif Kurta", "navy-motif-kurta.jpeg"],
+  ["Maroon Motif Kurta", "maroon-motif-kurta.jpeg"],
+  ["Mustard Motif Kurta Detail", "mustard-motif-kurta-detail.jpeg"],
+  ["Green Motif Kurta", "green-motif-kurta.jpeg"],
+  ["Red Motif Kurta", "red-motif-kurta.jpeg"],
+  ["Green Motif Kurta Detail", "green-motif-kurta-detail.jpeg"]
+]);
 
-/* Existing individual products. */
-PRODUCTS = [
-  {id:"cz-floral-ring",name:"CZ Floral Ring",price:560,stock:0,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/cz-floral-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A floral crystal ring.",long:"A gold-tone floral ring with crystal detail.",details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]},
-  {id:"v-shaped-crystal-ring",name:"V-Shaped Crystal Ring",price:560,stock:5,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/v-shaped-crystal-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A slim V-shaped crystal ring.",long:"A delicate gold-tone ring with a V-shaped crystal setting.",details:["Gold-tone finish","Crystal detail","Available in ring sizes 5-9"]},
-  {id:"yellow-stone-ring",name:"Yellow Stone Ring",price:560,stock:5,category:"jewellery",subcategory:"rings",img:"images/jewellery/rings/yellow-stone-ring-hand.jpeg",pos:"50% 50%",sizeOptions:["5","6","7","8","9"],sizes:{"5":true,"6":true,"7":true,"8":true,"9":true},short:"A yellow stone ring with a gold-tone band.",long:"A gold-tone ring centred with a yellow stone.",details:["Gold-tone finish","Yellow stone detail","Available in ring sizes 5-9"]},
-  {id:"gold-beaded-anklet",name:"Gold Beaded Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/gold-beaded-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold beaded anklet.",long:"A delicate anklet with gold-tone bead detail.",details:["Gold-tone finish","Adjustable clasp","One size"]},
-  {id:"black-bead-gold-anklet",name:"Black Bead Gold Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/black-bead-gold-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A black bead and gold-tone anklet.",long:"A fine anklet with alternating black beads and gold-tone detail.",details:["Gold-tone finish","Black bead detail","One size"]},
-  {id:"black-clover-charm-anklet",name:"Black Clover Charm Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/black-clover-charm-anklet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A black clover charm anklet.",long:"A gold-tone anklet finished with black clover charms.",details:["Gold-tone finish","Clover charm detail","One size"]},
-  {id:"gold-charms-anklet",name:"Gold Charms Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/gold-charms-anklet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"An anklet with gold-tone charms.",long:"A fine gold-tone anklet with a row of delicate charms.",details:["Gold-tone finish","Charm detail","One size"]},
-  {id:"gold-chain-anklet",name:"Gold Chain Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/gold-chain-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A simple gold chain anklet.",long:"A minimal gold-tone chain anklet for everyday styling.",details:["Gold-tone finish","Adjustable clasp","One size"]},
-  {id:"butterfly-charm-anklet",name:"Butterfly Charm Anklet",price:640,stock:4,category:"jewellery",subcategory:"kids",img:"images/jewellery/kids/butterfly-charm-anklet-on-feet.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A butterfly charm anklet.",long:"A gold-tone anklet with a delicate butterfly charm.",details:["Gold-tone finish","Butterfly charm","One size"]},
-  {id:"multistrand-gold-bead-necklace",name:"Multistrand Gold Bead Necklace",price:480,stock:6,category:"jewellery",subcategory:"neck-chains",img:"images/jewellery/necklaces/multistrand-gold-bead-necklace-model.jpeg",pos:"50% 42%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A layered gold bead necklace.",long:"A statement multistrand necklace with gold-tone bead detail.",details:["Gold-tone finish","Layered strands","One size"]},
-  {id:"green-stone-gold-necklace",name:"Green Stone Gold Necklace",price:480,stock:6,category:"jewellery",subcategory:"neck-chains",img:"images/jewellery/necklaces/green-stone-gold-necklace-model.jpeg",pos:"50% 42%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold-tone necklace with green stones.",long:"A gold-tone necklace finished with small green stone accents.",details:["Gold-tone finish","Green stone detail","One size"]},
-  {id:"pearl-charm-gold-bangle",name:"Pearl Charm Gold Bangle",price:390,stock:7,category:"jewellery",subcategory:"bangles",img:"images/jewellery/bangles/pearl-charm-gold-bangle-01.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold bangle with pearl charms.",long:"A gold-tone bangle decorated with pearl and charm details.",details:["Gold-tone finish","Pearl charm detail","One size"]},
-  {id:"blue-pearl-charm-bangle",name:"Blue Pearl Charm Bangle",price:390,stock:7,category:"jewellery",subcategory:"bangles",img:"images/jewellery/bangles/pearl-charm-gold-bangle-02.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A pearl and blue charm bangle.",long:"A gold-tone bangle with pearl and blue charm details.",details:["Gold-tone finish","Pearl and blue charm detail","One size"]},
-  {id:"blue-bead-gold-bangle",name:"Blue Bead Gold Bangle",price:390,stock:7,category:"jewellery",subcategory:"bangles",img:"images/jewellery/bangles/blue-bead-gold-bangle.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A gold bangle with blue bead detail.",long:"A fine gold-tone bangle decorated with blue beads.",details:["Gold-tone finish","Blue bead detail","One size"]},
-  {id:"blue-floral-charm-bangle",name:"Blue Floral Charm Bangle",price:390,stock:7,category:"jewellery",subcategory:"bangles",img:"images/jewellery/bangles/blue-floral-charm-bangle.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A blue floral charm bangle.",long:"A gold-tone bangle finished with blue floral charm detail.",details:["Gold-tone finish","Blue floral charms","One size"]},
-  {id:"crystal-drop-earrings",name:"Crystal Drop Earrings",price:320,stock:8,category:"jewellery",subcategory:"earrings",img:"images/jewellery/earrings/crystal-drop-earrings.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"Gold-tone crystal drop earrings.",long:"A delicate pair of gold-tone drop earrings with crystal detail.",details:["Gold-tone finish","Crystal drop detail","One size"]},
-  {id:"gold-heart-stud-earrings",name:"Gold Heart Stud Earrings",price:320,stock:8,category:"jewellery",subcategory:"earrings",img:"images/jewellery/earrings/gold-heart-stud-earrings.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A pair of polished gold heart studs.",long:"Small polished gold-tone heart stud earrings.",details:["Gold-tone finish","Heart design","One size"]},
-  {id:"ridged-heart-stud-earrings",name:"Ridged Heart Stud Earrings",price:320,stock:8,category:"jewellery",subcategory:"earrings",img:"images/jewellery/earrings/ridged-heart-stud-earrings.jpeg",pos:"50% 50%",sizeOptions:["One Size"],sizes:{"One Size":true},short:"A pair of ridged gold heart studs.",long:"Gold-tone heart stud earrings with a textured ridged finish.",details:["Gold-tone finish","Textured heart design","One size"]},
-  {id:"green-print-kurta-set",name:"Green Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/green-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A green printed kurta set.",long:"A green traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"pink-print-kurta-set",name:"Pink Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/pink-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A pink printed kurta set.",long:"A pink traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"ivory-print-kurta-set",name:"Ivory Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/ivory-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"An ivory printed kurta set.",long:"An ivory traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"blue-print-kurta-set",name:"Blue Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/blue-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A blue printed kurta set.",long:"A blue traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"lime-green-kurta-set",name:"Lime Green Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/lime-green-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A lime green kurta set.",long:"A lime green traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"navy-print-kurta-set",name:"Navy Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/navy-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A navy printed kurta set.",long:"A navy traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"mustard-print-kurta-set",name:"Mustard Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/mustard-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A mustard printed kurta set.",long:"A mustard traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"emerald-green-kurta-set",name:"Emerald Green Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/emerald-green-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"An emerald green kurta set.",long:"An emerald green traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"maroon-print-kurta-set",name:"Maroon Print Kurta Set",price:850,stock:6,category:"clothing",subcategory:"kurta",img:"images/clothing/traditional-wear/maroon-print-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A maroon printed kurta set.",long:"A maroon traditional kurta set with matching pieces.",details:["Traditional print","Matching set","Available in five sizes"]},
-  {id:"yellow-floral-kurta-set",name:"Yellow Floral Kurta Set",price:1150,stock:4,category:"clothing",subcategory:"3-pcs-sets",img:"images/clothing/traditional-wear/yellow-floral-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A yellow floral kurta set.",long:"A yellow floral traditional kurta set with coordinated pieces.",details:["Floral print","Matching set","Available in five sizes"]},
-  {id:"blue-floral-kurta-set",name:"Blue Floral Kurta Set",price:1150,stock:4,category:"clothing",subcategory:"3-pcs-sets",img:"images/clothing/traditional-wear/blue-floral-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A blue floral kurta set.",long:"A blue floral traditional kurta set with coordinated pieces.",details:["Floral print","Matching set","Available in five sizes"]},
-  {id:"red-floral-kurta-set",name:"Red Floral Kurta Set",price:1150,stock:4,category:"clothing",subcategory:"3-pcs-sets",img:"images/clothing/traditional-wear/red-floral-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A red floral kurta set.",long:"A red floral traditional kurta set with coordinated pieces.",details:["Floral print","Matching set","Available in five sizes"]},
-  {id:"black-floral-kurta-set",name:"Black Floral Kurta Set",price:1150,stock:4,category:"clothing",subcategory:"3-pcs-sets",img:"images/clothing/traditional-wear/black-floral-kurta-set.jpeg",pos:"50% 40%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A black floral kurta set.",long:"A black floral traditional kurta set with coordinated pieces.",details:["Floral print","Matching set","Available in five sizes"]},
-  {id:"mustard-motif-kurta",name:"Mustard Motif Kurta",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/mustard-motif-kurta.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A mustard motif-print kurta.",long:"A mustard kurta with motif print and decorative neckline.",details:["Motif print","Three-quarter sleeves","Available in five sizes"]},
-  {id:"navy-motif-kurta",name:"Navy Motif Kurta",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/navy-motif-kurta.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A navy motif-print kurta.",long:"A navy kurta with motif print and decorative neckline.",details:["Motif print","Three-quarter sleeves","Available in five sizes"]},
-  {id:"maroon-motif-kurta",name:"Maroon Motif Kurta",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/maroon-motif-kurta.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A maroon motif-print kurta.",long:"A maroon kurta with motif print and decorative neckline.",details:["Motif print","Three-quarter sleeves","Available in five sizes"]},
-  {id:"mustard-motif-kurta-detail",name:"Mustard Motif Kurta Detail",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/mustard-motif-kurta-detail.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A mustard motif-print kurta.",long:"A mustard kurta shown with a detailed neckline view.",details:["Motif print","Decorative neckline","Available in five sizes"]},
-  {id:"green-motif-kurta",name:"Green Motif Kurta",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/green-motif-kurta.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A green motif-print kurta.",long:"A green kurta with motif print and decorative neckline.",details:["Motif print","Three-quarter sleeves","Available in five sizes"]},
-  {id:"red-motif-kurta",name:"Red Motif Kurta",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/red-motif-kurta.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A red motif-print kurta.",long:"A red kurta with motif print and decorative neckline.",details:["Motif print","Three-quarter sleeves","Available in five sizes"]},
-  {id:"green-motif-kurta-detail",name:"Green Motif Kurta Detail",price:280,stock:9,category:"clothing",subcategory:"kurta",img:"images/clothing/kurta-sets/green-motif-kurta-detail.jpeg",pos:"50% 45%",sizeOptions:["S","M","L","XL","XXL"],sizes:{S:true,M:true,L:true,XL:true,XXL:true},short:"A green motif-print kurta.",long:"A green kurta shown with a detailed neckline view.",details:["Motif print","Decorative neckline","Available in five sizes"]}
-];
+/* ---------- BANGLES – 390 AED (22 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"bangles",
+  folder:"images/jewellery/bangles/",
+  price:390, stock:5,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Golden Floral Filigree Bangle", "golden-floral-filigree-bangle.jpg"],
+  ["Black Enamel Pave Bangle", "black-enamel-pave-bangle.jpg"],
+  ["Crystal Flower Bangle", "crystal-flower-bangle.jpg"],
+  ["Five Stone Pave Bangle", "five-stone-pave-bangle.jpg"],
+  ["Herringbone Gold Bangle", "herringbone-gold-bangle.jpg"],
+  ["Black Heart Ribbed Bangle", "black-heart-ribbed-bangle.jpg"],
+  ["Ribbed Gold Cuff Bangle", "ribbed-gold-cuff-bangle.jpg"],
+  ["Black Rectangle Charm Bangle", "black-rectangle-charm-bangle.jpg"],
+  ["Emerald Crystal Bangle", "emerald-crystal-bangle.jpg"],
+  ["Rose Gold Square Crystal Bangle", "rose-gold-square-crystal-bangle.jpg"],
+  ["Crystal Line Bangle", "crystal-line-bangle.jpg"],
+  ["Black and Pearl Clover Bangle", "black-and-pearl-clover-bangle.jpg"],
+  ["Crystal Clasp Bangle", "crystal-clasp-bangle.jpg"],
+  ["Emerald Bar Bangle", "emerald-bar-bangle.jpg"],
+  ["Triangle Crystal Bangle", "triangle-crystal-bangle.jpg"],
+  ["Rainbow Heart Charm Bangle", "rainbow-heart-charm-bangle.jpg"],
+  ["Crystal Leaf Open Bangle", "crystal-leaf-open-bangle.jpg"],
+  ["Rainbow Stone Bangle", "rainbow-stone-bangle.jpg"],
+  ["Crystal Floral Bangle", "crystal-floral-bangle.jpg"],
+  ["Arrow Crystal Bangle", "arrow-crystal-bangle.jpg"],
+  ["Triple Line Open Bangle", "triple-line-open-bangle.jpg"],
+  ["Gold Floral Cuff Bangle", "gold-floral-cuff-bangle.jpg"]
+]);
 
-function suppliedPhotoProduct(id, name, subcategory, img, price) {
-  return {
-    id:id, name:name, price:price, stock:5,
-    category:"jewellery", subcategory:subcategory, img:img, pos:"50% 50%",
-    sizeOptions:["One Size"], sizes:{"One Size":true},
-    short:"A gold-tone "+name.toLowerCase()+".",
-    long:"A polished gold-tone "+name.toLowerCase()+" designed for easy everyday styling.",
-    details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
-  };
+/* ---------- BRACELETS – 280 AED (31 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"bracelets",
+  folder:"images/jewellery/bracelets/",
+  price:25, stock:5,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Pearl Butterfly Bracelet", "pearl-butterfly-bracelet.jpg"],
+  ["Pearl Butterfly Bracelet", "pearl-butterfly-bracelet.jpg"],
+  ["Minimal Heart Bracelet", "minimal-heart-bracelet.jpg"],
+  ["Fine Gold Chain Bracelet", "fine-gold-chain-bracelet.jpg"],
+  ["Black Clover Bracelet", "black-clover-bracelet.jpg"],
+  ["Gold Bead Charm Bracelet", "gold-bead-charm-bracelet.jpg"],
+  ["Crystal Bow Bracelet", "crystal-bow-bracelet.jpg"],
+  ["Ruby Crystal Bracelet", "ruby-crystal-bracelet.jpg"],
+  ["Dangling Heart Bracelet", "dangling-heart-bracelet.jpg"],
+  ["Black Pearl Charm Bracelet", "black-pearl-charm-bracelet.jpg"],
+  ["Green Crystal Floral Bracelet", "green-crystal-floral-bracelet.jpg"],
+  ["Crystal Butterfly Bracelet", "crystal-butterfly-bracelet.jpg"],
+  ["Burgundy Crystal Bracelet", "burgundy-crystal-bracelet.jpg"],
+  ["Rainbow Crystal Bracelet", "rainbow-crystal-bracelet.jpg"],
+  ["Heart Outline Bracelet", "heart-outline-bracelet.jpg"],
+  ["Gold Charm Bracelet", "gold-charm-bracelet.jpg"],
+  ["Teardrop Charm Bracelet", "teardrop-charm-bracelet.jpg"],
+  ["Green Crystal Station Bracelet", "green-crystal-station-bracelet.jpg"],
+  ["Star Chain Bracelet", "star-chain-bracelet.jpg"],
+  ["Black Clover Station Bracelet", "black-clover-station-bracelet.jpg"],
+  ["Crystal Charm Cluster Bracelet", "crystal-charm-cluster-bracelet.jpg"],
+  ["Black Circle Bracelet", "black-circle-bracelet.jpg"],
+  ["Crystal Flower Station Bracelet", "crystal-flower-station-bracelet.jpg"],
+  ["Mama Heart Bracelet", "mama-heart-bracelet.jpg"],
+  ["Twisted Gold Bracelet", "twisted-gold-bracelet.jpg"],
+  ["Crystal Station Bracelet", "crystal-station-bracelet.jpg"],
+  ["Heart Drop Bracelet", "heart-drop-bracelet.jpg"],
+  ["Heart Charm Bracelet", "heart-charm-bracelet.jpg"],
+  ["Green Stone Station Bracelet", "green-stone-station-bracelet.jpg"],
+  ["Multicolour Teardrop Bracelet", "multicolour-teardrop-bracelet.jpg"],
+  ["Gold Flower Bracelet", "gold-flower-bracelet.jpg"],
+  ["Gold Flower Chain Bracelet", "gold-flower-chain-bracelet.jpg"]
+]);
+
+/* ---------- NECKLACES – 480 AED (40 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"neck-chains",
+  folder:"images/jewellery/necklaces/",
+  price:35, stock:5,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Sapphire Bead Necklace", "sapphire-bead-necklace.jpg"],
+  ["Crystal Butterfly Pendant Necklace", "crystal-butterfly-pendant-necklace.jpg"],
+  ["Pearl Station Charm Necklace", "pearl-station-charm-necklace.jpg"],
+  ["Gold Bead Station Necklace", "gold-bead-station-necklace.jpg"],
+  ["Gold Box Chain Necklace", "gold-box-chain-necklace.jpg"],
+  ["Gold Bow Pendant Necklace", "gold-bow-pendant-necklace.jpg"],
+  ["Gold Snake Chain Necklace", "gold-snake-chain-necklace.jpg"],
+  ["Crystal Initial A Necklace", "crystal-initial-a-necklace.jpg"],
+  ["Multicolour Charm Necklace", "multicolour-charm-necklace.jpg"],
+  ["Gold Letter Charm Necklace", "gold-letter-charm-necklace.jpg"],
+  ["Gold Initial K Necklace", "gold-initial-k-necklace.jpg"],
+  ["Key Charm Necklace", "key-charm-necklace.jpg"],
+  ["Heart Bow Necklace", "heart-bow-necklace.jpg"],
+  ["Butterfly Charm Necklace", "butterfly-charm-necklace.jpg"],
+  ["Crystal Charm Pendant Necklace", "crystal-charm-pendant-necklace.jpg"],
+  ["Gold Heart Pendant Necklace", "gold-heart-pendant-necklace.jpg"],
+  ["Infinity Pendant Necklace", "infinity-pendant-necklace.jpg"],
+  ["Crystal Charm Necklace", "crystal-charm-necklace.jpg"],
+  ["Floral Charm Necklace", "floral-charm-necklace.jpg"],
+  ["Butterfly Drop Necklace", "butterfly-drop-necklace.jpg"],
+  ["Gold Bar Necklace", "gold-bar-necklace.jpg"],
+  ["Round Coin Pendant Necklace", "round-coin-pendant-necklace.jpg"],
+  ["Oval Medallion Necklace", "oval-medallion-necklace.jpg"],
+  ["Heart Knot Necklace", "heart-knot-necklace.jpg"],
+  ["Crystal Y Drop Necklace", "crystal-y-drop-necklace.jpg"],
+  ["Green Heart Station Necklace", "green-heart-station-necklace.jpg"],
+  ["Gold Star Station Necklace", "gold-star-station-necklace.jpg"],
+  ["Gold Star Drop Necklace", "gold-star-drop-necklace.jpg"],
+  ["Gold Bow Necklace", "gold-bow-necklace.jpg"],
+  ["Black Tassel Pendant Necklace", "black-tassel-pendant-necklace.jpg"],
+  ["Double Chain Heart Necklace", "double-chain-heart-necklace.jpg"],
+  ["Crystal Solitaire Necklace", "crystal-solitaire-necklace.jpg"],
+  ["Crystal Drop Necklace", "crystal-drop-necklace.jpg"],
+  ["Crystal Flower Pendant Necklace", "crystal-flower-pendant-necklace.jpg"],
+  ["Gold Flower Pendant Necklace", "gold-flower-pendant-necklace.jpg"],
+  ["Heart Outline Pendant Necklace", "heart-outline-pendant-necklace.jpg"],
+  ["Crystal Bar Pendant Necklace", "crystal-bar-pendant-necklace.jpg"],
+  ["Crystal Charm Drop Necklace", "crystal-charm-drop-necklace.jpg"],
+  ["Crystal Heart Pendant Necklace", "crystal-heart-pendant-necklace.jpg"],
+  ["Heart Crystal Pendant Necklace", "heart-crystal-pendant-necklace.jpg"]
+]);
+
+/* ---------- MENS RINGS – 560 AED (11 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"mens",
+  folder:"images/jewellery/mens/",
+  price:25, stock:5,
+  sizes:["8","9","10","11","12"], pos:"50% 50%",
+  style:"",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Black and silver finish","Available in ring sizes 8-12","SH Branding Store gift pouch"]
+}, [
+  ["Black Silver Groove Ring", "black-silver-groove-ring.jpg"],
+  ["Triple Line Steel Ring", "triple-line-steel-ring.jpg"],
+  ["Black Twist Pattern Ring", "black-twist-pattern-ring.jpg"],
+  ["Black Diagonal Carbon Ring", "black-diagonal-carbon-ring.jpg"],
+  ["Silver Stripe Black Ring", "silver-stripe-black-ring.jpg"],
+  ["Silver Diagonal Slash Ring", "silver-diagonal-slash-ring.jpg"],
+  ["Black Silver Line Ring", "black-silver-line-ring.jpg"],
+  ["Brushed Silver Black Ring", "brushed-silver-black-ring.jpg"],
+  ["Black Textured Ring", "black-textured-ring.jpg"],
+  ["Black Woven Ring", "black-woven-ring.jpg"],
+  ["Multi Line Black Silver Ring", "multi-line-black-silver-ring.jpg"]
+]);
+
+/* ---------- ADULT BANGLES – 390 AED (23 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"adult-bangles",
+  folder:"images/jewellery/adult-bangles/",
+  price:30, stock:3,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Pave Link Hinged Bangle", "pave-link-hinged-bangle.jpg"],
+  ["Triple Line Two-Tone Cuff Bangle", "triple-line-two-tone-cuff-bangle.jpg"],
+  ["Flower Cuff Bangle", "flower-cuff-bangle.jpg"],
+  ["Daisy Cluster Hinged Bangle", "daisy-cluster-hinged-bangle.jpg"],
+  ["Black Disc Crystal Bangle", "black-disc-crystal-bangle.jpg"],
+  ["Open Flower Crystal Bangle", "open-flower-crystal-bangle.jpg"],
+  ["Scattered Crystal Slim Bangle", "scattered-crystal-slim-bangle.jpg"],
+  ["Herringbone Wide Cuff Bangle", "herringbone-wide-cuff-bangle.jpg"],
+  ["Black Heart Ribbed Bangle Slim", "black-heart-ribbed-bangle-slim.jpg"],
+  ["Ribbed Stretch Gold Bangle", "ribbed-stretch-gold-bangle.jpg"],
+  ["Black Square Beaded Bangle", "black-square-beaded-bangle.jpg"],
+  ["Emerald Baguette Panel Bangle", "emerald-baguette-panel-bangle.jpg"],
+  ["Rose Gold Mother of Pearl Bangle", "rose-gold-mother-of-pearl-bangle.jpg"],
+  ["Crystal Row Slim Bangle", "crystal-row-slim-bangle.jpg"],
+  ["Roman Numeral Disc Bangle", "roman-numeral-disc-bangle.jpg"],
+  ["Nail Wrap Crystal Bangle", "nail-wrap-crystal-bangle.jpg"],
+  ["Emerald Double Row Crystal Bangle", "emerald-double-row-crystal-bangle.jpg"],
+  ["Cutout Crystal Band Bangle", "cutout-crystal-band-bangle.jpg"],
+  ["Multicolour Heart Gem Bangle", "multicolour-heart-gem-bangle.jpg"],
+  ["Crossover Crystal Bypass Bangle", "crossover-crystal-bypass-bangle.jpg"],
+  ["Multicolour Gem Scatter Bangle", "multicolour-gem-scatter-bangle.jpg"],
+  ["Crystal Clover Beaded Bangle", "crystal-clover-beaded-bangle.jpg"],
+  ["Quilted Heart Crystal Bangle", "quilted-heart-crystal-bangle.jpg"]
+]);
+
+/* ---------- BABY BANGLES – 390 AED (12 pieces) ---------- */
+addProducts({
+  category:"jewellery", subcategory:"baby-bangles",
+  folder:"images/jewellery/baby-bangles/",
+  price:20, stock:5,
+  sizes:["One Size"],
+  style:"gold-tone",
+  note:"Comes in a SH Branding Store gift pouch.",
+  details:["Gold-tone finish","One size","SH Branding Store gift pouch"]
+}, [
+  ["Emerald Double Band Bangle", "emerald-double-band-bangle.jpg"],
+  ["Crystal Octagon Hinged Bangle", "crystal-octagon-hinged-bangle.jpg"],
+  ["White Clover Crystal Bangle", "white-clover-crystal-bangle.jpg"],
+  ["Pearl Flower Leaf Bangle", "pearl-flower-leaf-bangle.jpg"],
+  ["Black Disc Crescent Bangle", "black-disc-crescent-bangle.jpg"],
+  ["Evil Eye Charm Magnetic Bangle", "evil-eye-charm-magnetic-bangle.jpg"],
+  ["Black Double Clover Bangle", "black-double-clover-bangle.jpg"],
+  ["Crystal Block Hinged Bangle", "crystal-block-hinged-bangle.jpg"],
+  ["Open Leaf Branch Bangle", "open-leaf-branch-bangle.jpg"],
+  ["Starfish Shell Charm Magnetic Bangle", "starfish-shell-charm-magnetic-bangle.jpg"],
+  ["Black Square Triple Band Bangle", "black-square-triple-band-bangle.jpg"],
+  ["Blue Evil Eye Bead Magnetic Bangle", "blue-evil-eye-bead-magnetic-bangle.jpg"]
+]);
+
+/* =====================================================================
+   PRODUCT EDITOR – price, stock and sizes for EVERY product
+
+   Open the page  yourwebsite/#/admin  (or index.html#/admin) to edit the
+   price, stock and sizes of every product in a table.
+
+   • "Save on this device" lets you preview the changes in your own browser.
+   • To make the changes live for ALL customers: click "Copy code", then
+     replace the PRODUCT_OVERRIDES block below with the copied code and
+     upload the file again.
+   ===================================================================== */
+var PRODUCT_OVERRIDES = {};
+
+/* ---------------------------------------------------------------------
+   DON'T EDIT BELOW THIS LINE – this turns the lines above into products.
+   --------------------------------------------------------------------- */
+function addProducts(group, items) {
+  items.forEach(function (item) {
+    var name = item[0], file = item[1], extra = item[2] || {};
+    var o = {};
+    for (var k in group) o[k] = group[k];
+    for (var k2 in extra) o[k2] = extra[k2];
+
+    function path(f) { return f.indexOf("/") > -1 ? f : (group.folder || "") + f; }   // full path or just a file name
+
+    var id = o.id || name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    var n = 2, base = id;
+    while (PRODUCTS.some(function (p) { return p.id === id; })) id = base + "-" + (n++);   // keep ids unique
+
+    var sizes = o.sizes || ["One Size"], sizeMap = {};
+    sizes.forEach(function (s) { sizeMap[s] = true; });
+
+    var short = o.desc || ("A " + (o.style ? o.style + " " : "") + name.toLowerCase() + ".");
+    var long = o.desc || (short + (o.note ? " " + o.note : ""));
+
+    PRODUCTS.push({
+      id: id, name: name, price: o.price, stock: o.stock == null ? 5 : o.stock,
+      category: o.category, subcategory: o.subcategory,
+      img: path(file), gallery: o.gallery ? o.gallery.map(path) : undefined,
+      pos: o.pos || "50% 50%", sizeOptions: sizes, sizes: sizeMap,
+      short: short, long: long, details: o.details || []
+    });
+  });
 }
-
-/* Each supplied photo is listed below as its own purchasable product. */
-PRODUCTS.push(
-  suppliedPhotoProduct("golden-floral-filigree-bangle","Golden Floral Filigree Bangle","bangles","images/jewellery/bangles/golden-floral-filigree-bangle.jpg",390),
-  suppliedPhotoProduct("black-enamel-pave-bangle","Black Enamel Pave Bangle","bangles","images/jewellery/bangles/black-enamel-pave-bangle.jpg",390),
-  suppliedPhotoProduct("crystal-flower-bangle","Crystal Flower Bangle","bangles","images/jewellery/bangles/crystal-flower-bangle.jpg",390),
-  suppliedPhotoProduct("five-stone-pave-bangle","Five Stone Pave Bangle","bangles","images/jewellery/bangles/five-stone-pave-bangle.jpg",390),
-  suppliedPhotoProduct("herringbone-gold-bangle","Herringbone Gold Bangle","bangles","images/jewellery/bangles/herringbone-gold-bangle.jpg",390),
-  suppliedPhotoProduct("black-heart-ribbed-bangle","Black Heart Ribbed Bangle","bangles","images/jewellery/bangles/black-heart-ribbed-bangle.jpg",390),
-  suppliedPhotoProduct("ribbed-gold-cuff-bangle","Ribbed Gold Cuff Bangle","bangles","images/jewellery/bangles/ribbed-gold-cuff-bangle.jpg",390),
-  suppliedPhotoProduct("black-rectangle-charm-bangle","Black Rectangle Charm Bangle","bangles","images/jewellery/bangles/black-rectangle-charm-bangle.jpg",390),
-  suppliedPhotoProduct("emerald-crystal-bangle","Emerald Crystal Bangle","bangles","images/jewellery/bangles/emerald-crystal-bangle.jpg",390),
-  suppliedPhotoProduct("rose-gold-square-crystal-bangle","Rose Gold Square Crystal Bangle","bangles","images/jewellery/bangles/rose-gold-square-crystal-bangle.jpg",390),
-  suppliedPhotoProduct("crystal-line-bangle","Crystal Line Bangle","bangles","images/jewellery/bangles/crystal-line-bangle.jpg",390),
-  suppliedPhotoProduct("black-and-pearl-clover-bangle","Black and Pearl Clover Bangle","bangles","images/jewellery/bangles/black-and-pearl-clover-bangle.jpg",390),
-  suppliedPhotoProduct("crystal-clasp-bangle","Crystal Clasp Bangle","bangles","images/jewellery/bangles/crystal-clasp-bangle.jpg",390),
-  suppliedPhotoProduct("emerald-bar-bangle","Emerald Bar Bangle","bangles","images/jewellery/bangles/emerald-bar-bangle.jpg",390),
-  suppliedPhotoProduct("triangle-crystal-bangle","Triangle Crystal Bangle","bangles","images/jewellery/bangles/triangle-crystal-bangle.jpg",390),
-  suppliedPhotoProduct("rainbow-heart-charm-bangle","Rainbow Heart Charm Bangle","bangles","images/jewellery/bangles/rainbow-heart-charm-bangle.jpg",390),
-  suppliedPhotoProduct("crystal-leaf-open-bangle","Crystal Leaf Open Bangle","bangles","images/jewellery/bangles/crystal-leaf-open-bangle.jpg",390),
-  suppliedPhotoProduct("rainbow-stone-bangle","Rainbow Stone Bangle","bangles","images/jewellery/bangles/rainbow-stone-bangle.jpg",390),
-  suppliedPhotoProduct("crystal-floral-bangle","Crystal Floral Bangle","bangles","images/jewellery/bangles/crystal-floral-bangle.jpg",390),
-  suppliedPhotoProduct("arrow-crystal-bangle","Arrow Crystal Bangle","bangles","images/jewellery/bangles/arrow-crystal-bangle.jpg",390),
-  suppliedPhotoProduct("triple-line-open-bangle","Triple Line Open Bangle","bangles","images/jewellery/bangles/triple-line-open-bangle.jpg",390),
-  suppliedPhotoProduct("gold-floral-cuff-bangle","Gold Floral Cuff Bangle","bangles","images/jewellery/bangles/gold-floral-cuff-bangle.jpg",390),
-  suppliedPhotoProduct("pearl-butterfly-bracelet","Pearl Butterfly Bracelet","bracelets","images/jewellery/bracelets/pearl-butterfly-bracelet.jpg",280),
-  suppliedPhotoProduct("minimal-heart-bracelet","Minimal Heart Bracelet","bracelets","images/jewellery/bracelets/minimal-heart-bracelet.jpg",280),
-  suppliedPhotoProduct("fine-gold-chain-bracelet","Fine Gold Chain Bracelet","bracelets","images/jewellery/bracelets/fine-gold-chain-bracelet.jpg",280),
-  suppliedPhotoProduct("black-clover-bracelet","Black Clover Bracelet","bracelets","images/jewellery/bracelets/black-clover-bracelet.jpg",280),
-  suppliedPhotoProduct("gold-bead-charm-bracelet","Gold Bead Charm Bracelet","bracelets","images/jewellery/bracelets/gold-bead-charm-bracelet.jpg",280),
-  suppliedPhotoProduct("crystal-bow-bracelet","Crystal Bow Bracelet","bracelets","images/jewellery/bracelets/crystal-bow-bracelet.jpg",280),
-  suppliedPhotoProduct("ruby-crystal-bracelet","Ruby Crystal Bracelet","bracelets","images/jewellery/bracelets/ruby-crystal-bracelet.jpg",280),
-  suppliedPhotoProduct("dangling-heart-bracelet","Dangling Heart Bracelet","bracelets","images/jewellery/bracelets/dangling-heart-bracelet.jpg",280),
-  suppliedPhotoProduct("black-pearl-charm-bracelet","Black Pearl Charm Bracelet","bracelets","images/jewellery/bracelets/black-pearl-charm-bracelet.jpg",280),
-  suppliedPhotoProduct("green-crystal-floral-bracelet","Green Crystal Floral Bracelet","bracelets","images/jewellery/bracelets/green-crystal-floral-bracelet.jpg",280),
-  suppliedPhotoProduct("crystal-butterfly-bracelet","Crystal Butterfly Bracelet","bracelets","images/jewellery/bracelets/crystal-butterfly-bracelet.jpg",280),
-  suppliedPhotoProduct("burgundy-crystal-bracelet","Burgundy Crystal Bracelet","bracelets","images/jewellery/bracelets/burgundy-crystal-bracelet.jpg",280),
-  suppliedPhotoProduct("rainbow-crystal-bracelet","Rainbow Crystal Bracelet","bracelets","images/jewellery/bracelets/rainbow-crystal-bracelet.jpg",280),
-  suppliedPhotoProduct("heart-outline-bracelet","Heart Outline Bracelet","bracelets","images/jewellery/bracelets/heart-outline-bracelet.jpg",280),
-  suppliedPhotoProduct("gold-charm-bracelet","Gold Charm Bracelet","bracelets","images/jewellery/bracelets/gold-charm-bracelet.jpg",280),
-  suppliedPhotoProduct("teardrop-charm-bracelet","Teardrop Charm Bracelet","bracelets","images/jewellery/bracelets/teardrop-charm-bracelet.jpg",280),
-  suppliedPhotoProduct("green-crystal-station-bracelet","Green Crystal Station Bracelet","bracelets","images/jewellery/bracelets/green-crystal-station-bracelet.jpg",280),
-  suppliedPhotoProduct("star-chain-bracelet","Star Chain Bracelet","bracelets","images/jewellery/bracelets/star-chain-bracelet.jpg",280),
-  suppliedPhotoProduct("black-clover-station-bracelet","Black Clover Station Bracelet","bracelets","images/jewellery/bracelets/black-clover-station-bracelet.jpg",280),
-  suppliedPhotoProduct("crystal-charm-cluster-bracelet","Crystal Charm Cluster Bracelet","bracelets","images/jewellery/bracelets/crystal-charm-cluster-bracelet.jpg",280),
-  suppliedPhotoProduct("black-circle-bracelet","Black Circle Bracelet","bracelets","images/jewellery/bracelets/black-circle-bracelet.jpg",280),
-  suppliedPhotoProduct("crystal-flower-station-bracelet","Crystal Flower Station Bracelet","bracelets","images/jewellery/bracelets/crystal-flower-station-bracelet.jpg",280),
-  suppliedPhotoProduct("mama-heart-bracelet","Mama Heart Bracelet","bracelets","images/jewellery/bracelets/mama-heart-bracelet.jpg",280),
-  suppliedPhotoProduct("twisted-gold-bracelet","Twisted Gold Bracelet","bracelets","images/jewellery/bracelets/twisted-gold-bracelet.jpg",280),
-  suppliedPhotoProduct("crystal-station-bracelet","Crystal Station Bracelet","bracelets","images/jewellery/bracelets/crystal-station-bracelet.jpg",280),
-  suppliedPhotoProduct("heart-drop-bracelet","Heart Drop Bracelet","bracelets","images/jewellery/bracelets/heart-drop-bracelet.jpg",280),
-  suppliedPhotoProduct("heart-charm-bracelet","Heart Charm Bracelet","bracelets","images/jewellery/bracelets/heart-charm-bracelet.jpg",280),
-  suppliedPhotoProduct("green-stone-station-bracelet","Green Stone Station Bracelet","bracelets","images/jewellery/bracelets/green-stone-station-bracelet.jpg",280),
-  suppliedPhotoProduct("multicolour-teardrop-bracelet","Multicolour Teardrop Bracelet","bracelets","images/jewellery/bracelets/multicolour-teardrop-bracelet.jpg",280),
-  suppliedPhotoProduct("gold-flower-bracelet","Gold Flower Bracelet","bracelets","images/jewellery/bracelets/gold-flower-bracelet.jpg",280),
-  suppliedPhotoProduct("gold-flower-chain-bracelet","Gold Flower Chain Bracelet","bracelets","images/jewellery/bracelets/gold-flower-chain-bracelet.jpg",280),
-  suppliedPhotoProduct("sapphire-bead-necklace","Sapphire Bead Necklace","neck-chains","images/jewellery/necklaces/sapphire-bead-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-butterfly-pendant-necklace","Crystal Butterfly Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-butterfly-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("pearl-station-charm-necklace","Pearl Station Charm Necklace","neck-chains","images/jewellery/necklaces/pearl-station-charm-necklace.jpg",480),
-  suppliedPhotoProduct("gold-bead-station-necklace","Gold Bead Station Necklace","neck-chains","images/jewellery/necklaces/gold-bead-station-necklace.jpg",480),
-  suppliedPhotoProduct("gold-box-chain-necklace","Gold Box Chain Necklace","neck-chains","images/jewellery/necklaces/gold-box-chain-necklace.jpg",480),
-  suppliedPhotoProduct("gold-bow-pendant-necklace","Gold Bow Pendant Necklace","neck-chains","images/jewellery/necklaces/gold-bow-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("gold-snake-chain-necklace","Gold Snake Chain Necklace","neck-chains","images/jewellery/necklaces/gold-snake-chain-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-initial-a-necklace","Crystal Initial A Necklace","neck-chains","images/jewellery/necklaces/crystal-initial-a-necklace.jpg",480),
-  suppliedPhotoProduct("multicolour-charm-necklace","Multicolour Charm Necklace","neck-chains","images/jewellery/necklaces/multicolour-charm-necklace.jpg",480),
-  suppliedPhotoProduct("gold-letter-charm-necklace","Gold Letter Charm Necklace","neck-chains","images/jewellery/necklaces/gold-letter-charm-necklace.jpg",480),
-  suppliedPhotoProduct("gold-initial-k-necklace","Gold Initial K Necklace","neck-chains","images/jewellery/necklaces/gold-initial-k-necklace.jpg",480),
-  suppliedPhotoProduct("key-charm-necklace","Key Charm Necklace","neck-chains","images/jewellery/necklaces/key-charm-necklace.jpg",480),
-  suppliedPhotoProduct("heart-bow-necklace","Heart Bow Necklace","neck-chains","images/jewellery/necklaces/heart-bow-necklace.jpg",480),
-  suppliedPhotoProduct("butterfly-charm-necklace","Butterfly Charm Necklace","neck-chains","images/jewellery/necklaces/butterfly-charm-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-charm-pendant-necklace","Crystal Charm Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-charm-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("gold-heart-pendant-necklace","Gold Heart Pendant Necklace","neck-chains","images/jewellery/necklaces/gold-heart-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("infinity-pendant-necklace","Infinity Pendant Necklace","neck-chains","images/jewellery/necklaces/infinity-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-charm-necklace","Crystal Charm Necklace","neck-chains","images/jewellery/necklaces/crystal-charm-necklace.jpg",480),
-  suppliedPhotoProduct("floral-charm-necklace","Floral Charm Necklace","neck-chains","images/jewellery/necklaces/floral-charm-necklace.jpg",480),
-  suppliedPhotoProduct("butterfly-drop-necklace","Butterfly Drop Necklace","neck-chains","images/jewellery/necklaces/butterfly-drop-necklace.jpg",480),
-  suppliedPhotoProduct("gold-bar-necklace","Gold Bar Necklace","neck-chains","images/jewellery/necklaces/gold-bar-necklace.jpg",480),
-  suppliedPhotoProduct("round-coin-pendant-necklace","Round Coin Pendant Necklace","neck-chains","images/jewellery/necklaces/round-coin-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("oval-medallion-necklace","Oval Medallion Necklace","neck-chains","images/jewellery/necklaces/oval-medallion-necklace.jpg",480),
-  suppliedPhotoProduct("heart-knot-necklace","Heart Knot Necklace","neck-chains","images/jewellery/necklaces/heart-knot-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-y-drop-necklace","Crystal Y Drop Necklace","neck-chains","images/jewellery/necklaces/crystal-y-drop-necklace.jpg",480),
-  suppliedPhotoProduct("green-heart-station-necklace","Green Heart Station Necklace","neck-chains","images/jewellery/necklaces/green-heart-station-necklace.jpg",480),
-  suppliedPhotoProduct("gold-star-station-necklace","Gold Star Station Necklace","neck-chains","images/jewellery/necklaces/gold-star-station-necklace.jpg",480),
-  suppliedPhotoProduct("gold-star-drop-necklace","Gold Star Drop Necklace","neck-chains","images/jewellery/necklaces/gold-star-drop-necklace.jpg",480),
-  suppliedPhotoProduct("gold-bow-necklace","Gold Bow Necklace","neck-chains","images/jewellery/necklaces/gold-bow-necklace.jpg",480),
-  suppliedPhotoProduct("black-tassel-pendant-necklace","Black Tassel Pendant Necklace","neck-chains","images/jewellery/necklaces/black-tassel-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("double-chain-heart-necklace","Double Chain Heart Necklace","neck-chains","images/jewellery/necklaces/double-chain-heart-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-solitaire-necklace","Crystal Solitaire Necklace","neck-chains","images/jewellery/necklaces/crystal-solitaire-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-drop-necklace","Crystal Drop Necklace","neck-chains","images/jewellery/necklaces/crystal-drop-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-flower-pendant-necklace","Crystal Flower Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-flower-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("gold-flower-pendant-necklace","Gold Flower Pendant Necklace","neck-chains","images/jewellery/necklaces/gold-flower-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("heart-outline-pendant-necklace","Heart Outline Pendant Necklace","neck-chains","images/jewellery/necklaces/heart-outline-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-bar-pendant-necklace","Crystal Bar Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-bar-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-charm-drop-necklace","Crystal Charm Drop Necklace","neck-chains","images/jewellery/necklaces/crystal-charm-drop-necklace.jpg",480),
-  suppliedPhotoProduct("crystal-heart-pendant-necklace","Crystal Heart Pendant Necklace","neck-chains","images/jewellery/necklaces/crystal-heart-pendant-necklace.jpg",480),
-  suppliedPhotoProduct("heart-crystal-pendant-necklace","Heart Crystal Pendant Necklace","neck-chains","images/jewellery/necklaces/heart-crystal-pendant-necklace.jpg",480)
-);
-/* ===================================================================== */
 
 /* =====================================================================
    REVIEWS – shown in the "What our customers say" section on the homepage.
@@ -1140,6 +1395,24 @@ function store(get,key,val){
   catch(e){ if(get) return mem[key]==null?null:mem[key]; mem[key]=val; }
   return null;
 }
+/* ---------- product editor: overrides for price / stock / sizes ---------- */
+var LS_OVR="shbs_overrides";
+var BASE={};
+PRODUCTS.forEach(function(p){BASE[p.id]={price:p.price,stock:Number(p.stock),sizes:p.sizeOptions.slice()}});
+function setProd(p,o){
+  if(!o)return;
+  if(o.price!=null&&isFinite(o.price))p.price=Number(o.price);
+  if(o.stock!=null&&isFinite(o.stock))p.stock=Math.max(0,Math.floor(Number(o.stock)));
+  if(o.sizes&&o.sizes.length){p.sizeOptions=o.sizes.slice();p.sizes={};o.sizes.forEach(function(z){p.sizes[z]=true})}
+}
+function applyOverrides(){
+  var local=store(true,LS_OVR);
+  var ovr=(local&&typeof local==="object")?local:(typeof PRODUCT_OVERRIDES==="object"?PRODUCT_OVERRIDES:{});
+  PRODUCTS.forEach(function(p){var b=BASE[p.id];setProd(p,{price:b.price,stock:b.stock,sizes:b.sizes});setProd(p,ovr[p.id])});
+  return !!(local&&typeof local==="object");
+}
+var hasLocalOverrides=applyOverrides();
+
 function waLink(text){return "https://wa.me/"+CONFIG.whatsapp+(text?"?text="+encodeURIComponent(text):"")}
 var hasWA=function(){return /^\d{8,15}$/.test(CONFIG.whatsapp)};
 var hasIG=function(){return !!CONFIG.instagram};
@@ -1231,7 +1504,8 @@ function renderNavDropdowns(){
     if(!el)return;
     var info=CATEGORIES[catKey];
     el.innerHTML=info.subcategories.map(function(s){
-      return '<li><a href="#/collections/'+catKey+'/'+s.key+'">'+esc(s.label)+'</a></li>';
+      return '<li><a href="#/collections/'+catKey+'/'+s.key+'">'+esc(s.label)+'</a></li>'+
+        (s.children||[]).map(function(c){return '<li><a style="padding-left:40px;font-size:12px" href="#/collections/'+catKey+'/'+c.key+'">– '+esc(c.label)+'</a></li>'}).join('');
     }).join('')+'<li><a href="#/collections/'+catKey+'">All '+esc(info.label)+'</a></li>';
   });
 }
@@ -1303,9 +1577,16 @@ pages.collections=function(cat,sub){
   var catInfo=valid?CATEGORIES[cat]:null;
   // if the sub-category in the address bar doesn't exist for this
   // department (or there is no department selected), just ignore it
-  var validSub=valid&&sub&&catInfo.subcategories.some(function(s){return s.key===sub});
+  var allSubs=[]; if(valid) catInfo.subcategories.forEach(function(s){allSubs.push(s);(s.children||[]).forEach(function(c){allSubs.push(c)})});
+  var subInfo=(valid&&sub)?allSubs.filter(function(s){return s.key===sub})[0]:null;
+  var validSub=!!subInfo;
   var list=valid?PRODUCTS.filter(function(p){return p.category===cat}):PRODUCTS;
-  if(validSub) list=list.filter(function(p){return p.subcategory===sub});
+  if(validSub){
+    // a parent such as "Bangles" also shows everything inside its children (Adult / Baby Bangles)
+    var parentSub=catInfo.subcategories.filter(function(s){return s.key===sub})[0];
+    var subKeys=[sub].concat(((parentSub&&parentSub.children)||[]).map(function(c){return c.key}));
+    list=list.filter(function(p){return subKeys.indexOf(p.subcategory)>-1});
+  }
   var label=valid?catInfo.label:"All collections";
   var intro=cat==="jewellery"?"Gold-tone necklaces, earrings, rings, anklets and bangles, hand finished and gift boxed."
     :cat==="clothing"?"Traditional wear and kurta sets, cut for an easy, elegant drape."
@@ -1317,12 +1598,19 @@ pages.collections=function(cat,sub){
   // so adding a sub-category there is all you need to do.
   var subchips="";
   if(valid){
-    function chip(key,text,href){return '<a class="chip'+((validSub&&sub===key)||(!validSub&&!key)?' active':'')+'" href="'+href+'">'+text+'</a>'}
+    function chip(key,text,href,on){var a=on!==undefined?on:((validSub&&sub===key)||(!validSub&&!key));return '<a class="chip'+(a?' active':'')+'" href="'+href+'">'+text+'</a>'}
+    function holds(s){return validSub&&(s.key===sub||(s.children||[]).some(function(c){return c.key===sub}))}
     subchips='<div class="chips">'+chip("","All "+catInfo.label,"#/collections/"+cat)+
-      catInfo.subcategories.map(function(s){return chip(s.key,s.label,"#/collections/"+cat+"/"+s.key)}).join('')+
+      catInfo.subcategories.map(function(s){return chip(s.key,s.label,"#/collections/"+cat+"/"+s.key,holds(s))}).join('')+
     '</div>';
+    // second row of chips (e.g. Adult Bangles / Baby Bangles) once a group with children is open
+    var open=catInfo.subcategories.filter(holds)[0];
+    if(open&&open.children&&open.children.length){
+      subchips+='<div class="chips" style="margin-top:-8px">'+chip(open.key,"All "+open.label,"#/collections/"+cat+"/"+open.key,sub===open.key)+
+        open.children.map(function(c){return chip(c.key,c.label,"#/collections/"+cat+"/"+c.key,sub===c.key)}).join('')+'</div>';
+    }
   }
-  return {title:(validSub?catInfo.subcategories.filter(function(s){return s.key===sub})[0].label+" – ":"")+label+" | SH Branding Store", html:
+  return {title:(validSub?subInfo.label+" – ":"")+label+" | SH Branding Store", html:
   '<div class="on-sand"><div class="wrap"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>'+label+'</nav><h1>'+label+'</h1><p>'+intro+'</p></div>'+tabs+subchips+
   '<div class="cards" style="padding-bottom:clamp(70px,9vw,130px)">'+(list.length?list.map(card).join(''):'<p style="grid-column:1/-1;color:var(--taupe)">No pieces in this category yet.</p>')+'</div></div></div>'+trust()};
 };
@@ -1578,6 +1866,91 @@ pages.contact=function(){
   }};
 };
 
+pages.admin=function(){
+  var rows=PRODUCTS.map(function(p){
+    var c=p.category==="jewellery"?"Jewellery":"Clothing";
+    return '<tr data-id="'+esc(p.id)+'" data-name="'+esc(p.name.toLowerCase())+'">'+
+    '<td><div class="a-prod"><img src="'+esc(p.img)+'" alt="" loading="lazy"><div><strong>'+esc(p.name)+'</strong><small>'+c+' · '+esc(p.subcategory)+'</small></div></div></td>'+
+    '<td><input data-f="price" type="number" min="0" step="any" inputmode="decimal" value="'+esc(p.price)+'" aria-label="Price for '+esc(p.name)+'"></td>'+
+    '<td><input data-f="stock" type="number" min="0" step="1" inputmode="numeric" value="'+esc(p.stock)+'" aria-label="Stock for '+esc(p.name)+'"></td>'+
+    '<td><input data-f="sizes" type="text" value="'+esc(p.sizeOptions.join(", "))+'" aria-label="Sizes for '+esc(p.name)+'"></td></tr>';
+  }).join('');
+  return {title:"Edit products | SH Branding Store",html:
+  '<div class="on-sand"><div class="wrap" id="adm" style="padding-bottom:clamp(70px,9vw,120px)">'+
+  '<div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>Edit products</nav><h1>Edit products</h1>'+
+  '<p>Change the price, stock and sizes of any product. Separate sizes with commas, for example <em>S, M, L</em>. Stock 0 shows &ldquo;Sold out&rdquo;.</p></div>'+
+  (hasLocalOverrides?'<div class="notice" style="margin-bottom:22px"><strong>Preview mode.</strong> This device is showing saved edits that are not in the website file yet. Copy the code below into the file to publish them for everyone.</div>':'')+
+  '<div class="a-bar"><input id="aSearch" type="search" placeholder="Search products…" aria-label="Search products"><span id="aStatus" role="status" aria-live="polite"></span></div>'+
+  '<div class="a-scroll"><table class="a-table"><thead><tr><th>Product</th><th>Price ('+esc(CONFIG.currency)+')</th><th>Stock</th><th>Sizes</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+  '<div class="a-actions"><button class="btn solid" id="aSave" type="button">Save on this device</button><button class="btn" id="aCopy" type="button">Copy code for index.html</button><button class="btn" id="aReset" type="button">Undo all edits</button></div>'+
+  '<h2 style="font-size:26px;margin:40px 0 8px">Code to publish your changes</h2>'+
+  '<p style="color:var(--taupe);margin:0 0 12px">Replace the line <code>var PRODUCT_OVERRIDES = {};</code> in index.html with this code, then upload the file. Only products you changed are listed.</p>'+
+  '<textarea id="aOut" class="a-out" readonly rows="8" aria-label="Generated code"></textarea>'+
+  '</div></div>',
+  init:function(){
+    var root=$("#adm"),out=$("#aOut"),status=$("#aStatus");
+    function parseSizes(t){var seen={},r=[];t.split(",").forEach(function(x){x=x.trim();if(x&&!seen[x]){seen[x]=1;r.push(x)}});return r}
+    function readRow(tr){
+      var pr=tr.querySelector('[data-f="price"]'),st=tr.querySelector('[data-f="stock"]'),sz=tr.querySelector('[data-f="sizes"]');
+      var price=pr.value.trim()===""?NaN:Number(pr.value),stock=st.value.trim()===""?NaN:Number(st.value),sizes=parseSizes(sz.value);
+      var okP=isFinite(price)&&price>=0,okS=isFinite(stock)&&stock>=0&&Math.floor(stock)===stock,okZ=sizes.length>0;
+      pr.classList.toggle("bad",!okP);st.classList.toggle("bad",!okS);sz.classList.toggle("bad",!okZ);
+      return {price:price,stock:stock,sizes:sizes,ok:okP&&okS&&okZ};
+    }
+    function collect(){
+      var ovr={},bad=0,n=0;
+      $$("tr[data-id]",root).forEach(function(tr){
+        var id=tr.dataset.id,b=BASE[id],v=readRow(tr),o={};
+        if(!v.ok){bad++;return}
+        if(v.price!==b.price)o.price=v.price;
+        if(v.stock!==b.stock)o.stock=v.stock;
+        if(v.sizes.join("\u0001")!==b.sizes.join("\u0001"))o.sizes=v.sizes;
+        var ch=Object.keys(o).length>0;tr.classList.toggle("edited",ch);
+        if(ch){ovr[id]=o;n++}
+      });
+      return {ovr:ovr,bad:bad,n:n};
+    }
+    function code(ovr){
+      var ids=Object.keys(ovr);if(!ids.length)return "var PRODUCT_OVERRIDES = {};";
+      return "var PRODUCT_OVERRIDES = {\n"+ids.map(function(id){
+        var o=ovr[id],parts=[];
+        if("price" in o)parts.push("price:"+o.price);
+        if("stock" in o)parts.push("stock:"+o.stock);
+        if("sizes" in o)parts.push("sizes:"+JSON.stringify(o.sizes));
+        return "  "+JSON.stringify(id)+": { "+parts.join(", ")+" }";
+      }).join(",\n")+"\n};";
+    }
+    function refresh(){
+      var c=collect();out.value=code(c.ovr);
+      status.className=c.bad?"err":"";
+      status.textContent=c.bad?c.bad+" product"+(c.bad===1?"":"s")+" with an invalid value (highlighted)":c.n+" product"+(c.n===1?"":"s")+" changed from the original file";
+      return c;
+    }
+    root.addEventListener("input",function(e){if(e.target.matches("[data-f]"))refresh()});
+    $("#aSearch").addEventListener("input",function(){
+      var q=this.value.trim().toLowerCase();
+      $$("tr[data-id]",root).forEach(function(tr){tr.hidden=!!q&&tr.dataset.name.indexOf(q)===-1});
+    });
+    $("#aSave").addEventListener("click",function(){
+      var c=refresh();
+      if(c.bad){status.textContent="Fix the highlighted values before saving.";return}
+      store(false,LS_OVR,c.ovr);hasLocalOverrides=applyOverrides();
+      status.className="";status.textContent="Saved on this device. The store here now shows these values. Use “Copy code” to publish them.";
+    });
+    $("#aCopy").addEventListener("click",function(){
+      refresh();
+      function done(){status.className="";status.textContent="Code copied. Paste it over the PRODUCT_OVERRIDES line in index.html."}
+      function fallback(){out.focus();out.select();try{document.execCommand("copy");done()}catch(e){status.textContent="Select the code below and copy it."}}
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(out.value).then(done,fallback);else fallback();
+    });
+    $("#aReset").addEventListener("click",function(){
+      if(!confirm("Undo all edits made on this device and go back to the values in index.html?"))return;
+      store(false,LS_OVR,null);hasLocalOverrides=applyOverrides();route();
+    });
+    refresh();
+  }};
+};
+
 pages.faq=function(){return {title:"FAQ | SH Branding Store",html:'<div class="on-sand"><div class="narrow" style="padding-bottom:clamp(70px,9vw,120px)"><div class="page-head" style="padding-left:0"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>FAQ</nav><h1>Frequently asked questions</h1></div>'+faqHTML()+'</div></div>'+contactCTA()}};
 
 pages["how-to-order"]=function(){return {title:"How to order | SH Branding Store",html:'<div class="on-sand"><div class="wrap" style="padding-bottom:clamp(70px,9vw,120px)"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Home</a><span>/</span>How to order</nav><h1>How to order</h1><p>Order online in minutes and pay in cash when your order arrives.</p></div>'+orderSteps()+
@@ -1641,7 +2014,7 @@ $("#burger").addEventListener("click",function(){var m=$("#menu"),o=m.classList.
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("#menu").classList.remove("open");$("#burger").setAttribute("aria-expanded","false")}});
 
 /* validate cart against products (in case products changed) */
-cart=cart.filter(function(l){return byId(l.id)&&l.qty>0});
+cart=cart.filter(function(l){var p=byId(l.id);return p&&l.qty>0&&p.sizeOptions.indexOf(l.size)>-1});saveCart();
 renderFooter(); renderNavDropdowns(); updateBadge(); route(); flushQueue();
 })();
 </script>
